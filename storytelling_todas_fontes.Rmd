@@ -367,7 +367,7 @@ dados_2016 <-
 
 ordem_origem_combustivel<- 
   dados_grafico_historia %>%
-  filter(between(ano_inicio, 1960, 2000)) %>%
+  filter(between(ano_inicio, 2017, 2025)) %>%
   summarise(total = sum(total_outorgado)) %>%
   arrange(desc(total))
 
@@ -383,13 +383,29 @@ dados_grafico_historia %>%
             show.legend = TRUE) +
   geom_text(data = dados_2016, 
             aes(label = str_wrap("Em 2016 entra em operação Belo Monte. Potência outorgada atual: 11 mil GW   ", 100) ),
-            hjust = 1.01)  +
-  geom_point(data = dados_2016,
-             size = 2) +
+            hjust = 1.01,
+            color = "#324e5a")   +
   geom_text(data = tibble(ano_inicio =1960, total_outorgado = 7000), 
             label = str_wrap("Das usinas em operação desde 1960–2000, 90% da potência instalada é de fonte hídrica.",29),
-            hjust = 0.5) +
-  
+            hjust = 0.5,
+            color = "#324e5a") +
+  geom_curve(
+    aes(x = 1985, y = 14900, xend = 2016, yend = 11000),
+    curvature = 0.25, ncp = 50,
+    arrow = arrow(length = unit(4, "mm"), type = "closed"),
+            color = "#324e5a"
+  )   +
+  geom_text(data = tibble(ano_inicio =1955, total_outorgado = 12000), 
+            label = str_wrap("Das usinas em operação desde 2017, 73% da potência instalada é de fontes solares ou eólicas.",40),
+            hjust = 0.5,
+            color = "#324e5a") +
+  geom_curve(
+    aes(x = 1982, y = 11000, xend = 2023, yend = 8000),
+    curvature = 0.25, ncp = 50,
+    arrow = arrow(length = unit(4, "mm"), type = "closed"),
+            color = "#324e5a"
+  )   + 
+
   theme_light() +
   scale_fill_manual(values = cores_combustivel) +
   scale_y_continuous(labels = scales::comma_format(big.mark = ".")) +
