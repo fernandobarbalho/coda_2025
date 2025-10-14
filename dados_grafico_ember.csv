@@ -1,0 +1,517 @@
+area,country_code,date,area_type,continent,ember_region,eu,oecd,g20,g7,asean,category,subcategory,variable,unit,value,yo_y_absolute_change,yo_y_percent_change
+Australia,AUS,2018-01-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1,0.17,20.48
+Australia,AUS,2018-02-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,0.84,0.09,12
+Australia,AUS,2018-03-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,0.84,0.16,23.53
+Australia,AUS,2018-04-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,0.73,0.13,21.67
+Australia,AUS,2018-05-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,0.63,0.13,26
+Australia,AUS,2018-06-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,0.57,0.13,29.55
+Australia,AUS,2018-07-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,0.69,0.38,122.58
+Australia,AUS,2018-08-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,0.9,0.61,210.34
+Australia,AUS,2018-09-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.07,0.31,40.79
+Australia,AUS,2018-10-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.17,0.38,48.1
+Australia,AUS,2018-11-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.38,0.5,56.82
+Australia,AUS,2018-12-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.54,0.55,55.56
+Australia,AUS,2019-01-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.61,0.61,61
+Australia,AUS,2019-02-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.39,0.55,65.48
+Australia,AUS,2019-03-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.35,0.51,60.71
+Australia,AUS,2019-04-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.2,0.47,64.38
+Australia,AUS,2019-05-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.01,0.38,60.32
+Australia,AUS,2019-06-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,0.88,0.31,54.39
+Australia,AUS,2019-07-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.08,0.39,56.52
+Australia,AUS,2019-08-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.39,0.49,54.44
+Australia,AUS,2019-09-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.61,0.54,50.47
+Australia,AUS,2019-10-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.86,0.69,58.97
+Australia,AUS,2019-11-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.07,0.69,50
+Australia,AUS,2019-12-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.29,0.75,48.7
+Australia,AUS,2020-01-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.03,0.42,26.09
+Australia,AUS,2020-02-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.75,0.36,25.9
+Australia,AUS,2020-03-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.84,0.49,36.3
+Australia,AUS,2020-04-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.54,0.34,28.33
+Australia,AUS,2020-05-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.35,0.34,33.66
+Australia,AUS,2020-06-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.16,0.28,31.82
+Australia,AUS,2020-07-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.31,0.23,21.3
+Australia,AUS,2020-08-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.65,0.26,18.71
+Australia,AUS,2020-09-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.94,0.33,20.5
+Australia,AUS,2020-10-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.26,0.4,21.51
+Australia,AUS,2020-11-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.66,0.59,28.5
+Australia,AUS,2020-12-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.71,0.42,18.34
+Australia,AUS,2021-01-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.75,0.72,35.47
+Australia,AUS,2021-02-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.38,0.63,36
+Australia,AUS,2021-03-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.28,0.44,23.91
+Australia,AUS,2021-04-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.01,0.47,30.52
+Australia,AUS,2021-05-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.68,0.33,24.44
+Australia,AUS,2021-06-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.38,0.22,18.97
+Australia,AUS,2021-07-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.57,0.26,19.85
+Australia,AUS,2021-08-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.1,0.45,27.27
+Australia,AUS,2021-09-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.52,0.58,29.9
+Australia,AUS,2021-10-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.99,0.73,32.3
+Australia,AUS,2021-11-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.78,0.12,4.51
+Australia,AUS,2021-12-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,3.74,1.03,38.01
+Australia,AUS,2022-01-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,3.5,0.75,27.27
+Australia,AUS,2022-02-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,3.16,0.78,32.77
+Australia,AUS,2022-03-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.93,0.65,28.51
+Australia,AUS,2022-04-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.31,0.3,14.93
+Australia,AUS,2022-05-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.85,0.17,10.12
+Australia,AUS,2022-06-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.72,0.34,24.64
+Australia,AUS,2022-07-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,1.96,0.39,24.84
+Australia,AUS,2022-08-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.35,0.25,11.9
+Australia,AUS,2022-09-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.75,0.23,9.13
+Australia,AUS,2022-10-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,3.1,0.11,3.68
+Australia,AUS,2022-11-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,3.84,1.06,38.13
+Australia,AUS,2022-12-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,4.38,0.64,17.11
+Australia,AUS,2023-01-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,4.23,0.73,20.86
+Australia,AUS,2023-02-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,3.85,0.69,21.84
+Australia,AUS,2023-03-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,3.52,0.59,20.14
+Australia,AUS,2023-04-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.95,0.64,27.71
+Australia,AUS,2023-05-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.61,0.76,41.08
+Australia,AUS,2023-06-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.09,0.37,21.51
+Australia,AUS,2023-07-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.4,0.44,22.45
+Australia,AUS,2023-08-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,3.06,0.71,30.21
+Australia,AUS,2023-09-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,3.8,1.05,38.18
+Australia,AUS,2023-10-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,4.31,1.21,39.03
+Australia,AUS,2023-11-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,4.28,0.44,11.46
+Australia,AUS,2023-12-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,4.79,0.41,9.36
+Australia,AUS,2024-01-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,4.67,0.44,10.4
+Australia,AUS,2024-02-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,4.41,0.56,14.55
+Australia,AUS,2024-03-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,4.15,0.63,17.9
+Australia,AUS,2024-04-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,3.32,0.37,12.54
+Australia,AUS,2024-05-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.74,0.13,4.98
+Australia,AUS,2024-06-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.35,0.26,12.44
+Australia,AUS,2024-07-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,2.66,0.26,10.83
+Australia,AUS,2024-08-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,3.24,0.18,5.88
+Australia,AUS,2024-09-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,3.84,0.04,1.05
+Australia,AUS,2024-10-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,4.76,0.45,10.44
+Australia,AUS,2024-11-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,4.83,0.55,12.85
+Australia,AUS,2024-12-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,5.77,0.98,20.46
+Australia,AUS,2025-01-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,5.58,0.91,19.49
+Australia,AUS,2025-02-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,4.9,0.49,11.11
+Australia,AUS,2025-03-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,4.33,0.18,4.34
+Australia,AUS,2025-04-01,Country,Oceania,Oceania,0,1,1,0,0,Electricity generation,Fuel,Solar,TWh,3.8,0.48,14.46
+Brazil,BRA,2018-01-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.21,NA,NA
+Brazil,BRA,2018-02-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.19,NA,NA
+Brazil,BRA,2018-03-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.24,NA,NA
+Brazil,BRA,2018-04-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.24,NA,NA
+Brazil,BRA,2018-05-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.28,NA,NA
+Brazil,BRA,2018-06-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.28,NA,NA
+Brazil,BRA,2018-07-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.32,NA,NA
+Brazil,BRA,2018-08-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.31,NA,NA
+Brazil,BRA,2018-09-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.35,NA,NA
+Brazil,BRA,2018-10-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.34,NA,NA
+Brazil,BRA,2018-11-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.32,NA,NA
+Brazil,BRA,2018-12-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.39,NA,NA
+Brazil,BRA,2019-01-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.54,0.33,157.14
+Brazil,BRA,2019-02-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.44,0.25,131.58
+Brazil,BRA,2019-03-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.5,0.26,108.33
+Brazil,BRA,2019-04-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.47,0.23,95.83
+Brazil,BRA,2019-05-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.49,0.21,75
+Brazil,BRA,2019-06-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.49,0.21,75
+Brazil,BRA,2019-07-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.53,0.21,65.63
+Brazil,BRA,2019-08-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.6,0.29,93.55
+Brazil,BRA,2019-09-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.64,0.29,82.86
+Brazil,BRA,2019-10-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.66,0.32,94.12
+Brazil,BRA,2019-11-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.62,0.3,93.75
+Brazil,BRA,2019-12-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.66,0.27,69.23
+Brazil,BRA,2020-01-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.75,0.21,38.89
+Brazil,BRA,2020-02-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.71,0.27,61.36
+Brazil,BRA,2020-03-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.83,0.33,66
+Brazil,BRA,2020-04-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.87,0.4,85.11
+Brazil,BRA,2020-05-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.88,0.39,79.59
+Brazil,BRA,2020-06-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.88,0.39,79.59
+Brazil,BRA,2020-07-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.95,0.42,79.25
+Brazil,BRA,2020-08-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,1,0.4,66.67
+Brazil,BRA,2020-09-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,1.08,0.44,68.75
+Brazil,BRA,2020-10-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,1.01,0.35,53.03
+Brazil,BRA,2020-11-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.88,0.26,41.94
+Brazil,BRA,2020-12-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.91,0.25,37.88
+Brazil,BRA,2021-01-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.96,0.21,28
+Brazil,BRA,2021-02-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,0.77,0.06,8.45
+Brazil,BRA,2021-03-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,1.2,0.37,44.58
+Brazil,BRA,2021-04-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,1.22,0.35,40.23
+Brazil,BRA,2021-05-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,1.33,0.45,51.14
+Brazil,BRA,2021-06-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,1.38,0.5,56.82
+Brazil,BRA,2021-07-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,1.46,0.51,53.68
+Brazil,BRA,2021-08-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,1.55,0.55,55
+Brazil,BRA,2021-09-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,1.82,0.74,68.52
+Brazil,BRA,2021-10-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,1.79,0.78,77.23
+Brazil,BRA,2021-11-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,1.66,0.78,88.64
+Brazil,BRA,2021-12-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,1.62,0.71,78.02
+Brazil,BRA,2022-01-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,2.01,1.05,109.38
+Brazil,BRA,2022-02-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,1.95,1.18,153.25
+Brazil,BRA,2022-03-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,2.27,1.07,89.17
+Brazil,BRA,2022-04-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,2.21,0.99,81.15
+Brazil,BRA,2022-05-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,2.21,0.88,66.17
+Brazil,BRA,2022-06-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,2.15,0.77,55.8
+Brazil,BRA,2022-07-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,2.51,1.05,71.92
+Brazil,BRA,2022-08-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,2.82,1.27,81.94
+Brazil,BRA,2022-09-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,3.02,1.2,65.93
+Brazil,BRA,2022-10-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,3.28,1.49,83.24
+Brazil,BRA,2022-11-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,2.75,1.09,65.66
+Brazil,BRA,2022-12-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,2.96,1.34,82.72
+Brazil,BRA,2023-01-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,3.21,1.2,59.7
+Brazil,BRA,2023-02-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,3.25,1.3,66.67
+Brazil,BRA,2023-03-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,3.37,1.1,48.46
+Brazil,BRA,2023-04-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,3.28,1.07,48.42
+Brazil,BRA,2023-05-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,3.76,1.55,70.14
+Brazil,BRA,2023-06-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,3.59,1.44,66.98
+Brazil,BRA,2023-07-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,4.13,1.62,64.54
+Brazil,BRA,2023-08-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,4.65,1.83,64.89
+Brazil,BRA,2023-09-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,5.08,2.06,68.21
+Brazil,BRA,2023-10-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,5.39,2.11,64.33
+Brazil,BRA,2023-11-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,5.95,3.2,116.36
+Brazil,BRA,2023-12-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,6.07,3.11,105.07
+Brazil,BRA,2024-01-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,5.78,2.57,80.06
+Brazil,BRA,2024-02-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,5.55,2.3,70.77
+Brazil,BRA,2024-03-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,5.94,2.57,76.26
+Brazil,BRA,2024-04-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,5.63,2.35,71.65
+Brazil,BRA,2024-05-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,5.51,1.75,46.54
+Brazil,BRA,2024-06-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,5.12,1.53,42.62
+Brazil,BRA,2024-07-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,5.56,1.43,34.62
+Brazil,BRA,2024-08-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,6.39,1.74,37.42
+Brazil,BRA,2024-09-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,6.76,1.68,33.07
+Brazil,BRA,2024-10-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,7.62,2.23,41.37
+Brazil,BRA,2024-11-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,7.33,1.38,23.19
+Brazil,BRA,2024-12-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,7.74,1.67,27.51
+Brazil,BRA,2025-01-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,7.74,1.96,33.91
+Brazil,BRA,2025-02-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,7.36,1.81,32.61
+Brazil,BRA,2025-03-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,8.53,2.59,43.6
+Brazil,BRA,2025-04-01,Country,South America,Latin America and Caribbean,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,7.19,1.56,27.71
+China,CHN,2018-01-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,11.03,4.26,62.92
+China,CHN,2018-02-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,10.94,4.22,62.8
+China,CHN,2018-03-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,13.98,5.37,62.37
+China,CHN,2018-04-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,14.8,5.87,65.73
+China,CHN,2018-05-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,15.64,5.37,52.29
+China,CHN,2018-06-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,16.55,6.23,60.37
+China,CHN,2018-07-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,16.89,5.5,48.29
+China,CHN,2018-08-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,17.28,6.1,54.56
+China,CHN,2018-09-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,16.33,4.77,41.26
+China,CHN,2018-10-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,16.67,5.58,50.32
+China,CHN,2018-11-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,14.37,3.15,28.07
+China,CHN,2018-12-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,12.42,2.68,27.52
+China,CHN,2019-01-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,12.35,1.32,11.97
+China,CHN,2019-02-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,12.53,1.59,14.53
+China,CHN,2019-03-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,19.12,5.14,36.77
+China,CHN,2019-04-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,20.27,5.47,36.96
+China,CHN,2019-05-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,21.62,5.98,38.24
+China,CHN,2019-06-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,20.81,4.26,25.74
+China,CHN,2019-07-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,21.8,4.91,29.07
+China,CHN,2019-08-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,22.05,4.77,27.6
+China,CHN,2019-09-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,20.95,4.62,28.29
+China,CHN,2019-10-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,19.4,2.73,16.38
+China,CHN,2019-11-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,16.93,2.56,17.81
+China,CHN,2019-12-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,16.47,4.05,32.61
+China,CHN,2020-01-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,15.96,3.61,29.23
+China,CHN,2020-02-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,15.3,2.77,22.11
+China,CHN,2020-03-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,21.53,2.41,12.6
+China,CHN,2020-04-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,23.17,2.9,14.31
+China,CHN,2020-05-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,23.61,1.99,9.2
+China,CHN,2020-06-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,23.41,2.6,12.49
+China,CHN,2020-07-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,25.56,3.76,17.25
+China,CHN,2020-08-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,26.6,4.55,20.63
+China,CHN,2020-09-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,25.34,4.39,20.95
+China,CHN,2020-10-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,22.69,3.29,16.96
+China,CHN,2020-11-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,18.58,1.65,9.75
+China,CHN,2020-12-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,18.73,2.26,13.72
+China,CHN,2021-01-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,21.67,5.71,35.78
+China,CHN,2021-02-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,21.76,6.46,42.22
+China,CHN,2021-03-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,25.37,3.84,17.84
+China,CHN,2021-04-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,26.58,3.41,14.72
+China,CHN,2021-05-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,31.27,7.66,32.44
+China,CHN,2021-06-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,30.99,7.58,32.38
+China,CHN,2021-07-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,31.14,5.58,21.83
+China,CHN,2021-08-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,31.24,4.64,17.44
+China,CHN,2021-09-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,28.58,3.24,12.79
+China,CHN,2021-10-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,25.68,2.99,13.18
+China,CHN,2021-11-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,26.23,7.65,41.17
+China,CHN,2021-12-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,25.39,6.66,35.56
+China,CHN,2022-01-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,26.28,4.61,21.27
+China,CHN,2022-02-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,25.65,3.89,17.88
+China,CHN,2022-03-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,32.17,6.8,26.8
+China,CHN,2022-04-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,36.69,10.11,38.04
+China,CHN,2022-05-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,38.27,7,22.39
+China,CHN,2022-06-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,39.94,8.95,28.88
+China,CHN,2022-07-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,43.48,12.34,39.63
+China,CHN,2022-08-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,43.57,12.33,39.47
+China,CHN,2022-09-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,42.56,13.98,48.92
+China,CHN,2022-10-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,38.12,12.44,48.44
+China,CHN,2022-11-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,30.25,4.02,15.33
+China,CHN,2022-12-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,30.33,4.94,19.46
+China,CHN,2023-01-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,34.56,8.28,31.51
+China,CHN,2023-02-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,34.36,8.71,33.96
+China,CHN,2023-03-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,44.58,12.41,38.58
+China,CHN,2023-04-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,45.72,9.03,24.61
+China,CHN,2023-05-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,51.13,12.86,33.6
+China,CHN,2023-06-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,55.95,16.01,40.09
+China,CHN,2023-07-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,57.79,14.31,32.91
+China,CHN,2023-08-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,59.24,15.67,35.97
+China,CHN,2023-09-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,53.57,11.01,25.87
+China,CHN,2023-10-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,53.61,15.49,40.63
+China,CHN,2023-11-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,49.8,19.55,64.63
+China,CHN,2023-12-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,43.85,13.52,44.58
+China,CHN,2024-01-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,48.49,13.93,40.31
+China,CHN,2024-02-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,47.76,13.4,39
+China,CHN,2024-03-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,65.55,20.97,47.04
+China,CHN,2024-04-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,69.36,23.64,51.71
+China,CHN,2024-05-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,79.82,28.69,56.11
+China,CHN,2024-06-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,80.42,24.47,43.74
+China,CHN,2024-07-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,83.03,25.24,43.68
+China,CHN,2024-08-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,88.73,29.49,49.78
+China,CHN,2024-09-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,72.74,19.17,35.78
+China,CHN,2024-10-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,70.04,16.43,30.65
+China,CHN,2024-11-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,62.91,13.11,26.33
+China,CHN,2024-12-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,65.26,21.41,48.83
+China,CHN,2025-01-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,74.23,25.74,53.08
+China,CHN,2025-02-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,73.76,26,54.44
+China,CHN,2025-03-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,84.81,19.26,29.38
+China,CHN,2025-04-01,Country,Asia,Asia,0,0,1,0,0,Electricity generation,Fuel,Solar,TWh,96,26.64,38.41
+Germany,DEU,2018-01-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,0.77,-0.08,-9.41
+Germany,DEU,2018-02-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,1.93,0.36,22.93
+Germany,DEU,2018-03-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,2.85,-0.57,-16.67
+Germany,DEU,2018-04-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,5.1,1.02,25
+Germany,DEU,2018-05-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,6.25,0.83,15.31
+Germany,DEU,2018-06-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,5.62,-0.06,-1.06
+Germany,DEU,2018-07-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,6.5,1.33,25.73
+Germany,DEU,2018-08-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,5.46,0.59,12.11
+Germany,DEU,2018-09-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,4.29,1.03,31.6
+Germany,DEU,2018-10-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,2.9,0.64,28.32
+Germany,DEU,2018-11-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,1.23,0.35,39.77
+Germany,DEU,2018-12-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,0.55,0.03,5.77
+Germany,DEU,2019-01-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,0.79,0.02,2.6
+Germany,DEU,2019-02-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,2.32,0.39,20.21
+Germany,DEU,2019-03-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,3.23,0.38,13.33
+Germany,DEU,2019-04-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,5.41,0.31,6.08
+Germany,DEU,2019-05-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,5.31,-0.94,-15.04
+Germany,DEU,2019-06-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,6.83,1.21,21.53
+Germany,DEU,2019-07-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,6.07,-0.43,-6.62
+Germany,DEU,2019-08-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,5.58,0.12,2.2
+Germany,DEU,2019-09-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,4.14,-0.15,-3.5
+Germany,DEU,2019-10-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,2.57,-0.33,-11.38
+Germany,DEU,2019-11-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,1.11,-0.12,-9.76
+Germany,DEU,2019-12-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,0.99,0.44,80
+Germany,DEU,2020-01-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,1.14,0.35,44.3
+Germany,DEU,2020-02-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,1.76,-0.56,-24.14
+Germany,DEU,2020-03-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,4.34,1.11,34.37
+Germany,DEU,2020-04-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,6.71,1.3,24.03
+Germany,DEU,2020-05-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,6.6,1.29,24.29
+Germany,DEU,2020-06-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,6.08,-0.75,-10.98
+Germany,DEU,2020-07-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,6.66,0.59,9.72
+Germany,DEU,2020-08-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,5.77,0.19,3.41
+Germany,DEU,2020-09-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,4.89,0.75,18.12
+Germany,DEU,2020-10-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,2.27,-0.3,-11.67
+Germany,DEU,2020-11-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,1.59,0.48,43.24
+Germany,DEU,2020-12-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,0.71,-0.28,-28.28
+Germany,DEU,2021-01-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,0.65,-0.49,-42.98
+Germany,DEU,2021-02-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,2.11,0.35,19.89
+Germany,DEU,2021-03-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,4.4,0.06,1.38
+Germany,DEU,2021-04-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,5.83,-0.88,-13.11
+Germany,DEU,2021-05-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,6.28,-0.32,-4.85
+Germany,DEU,2021-06-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,7.56,1.48,24.34
+Germany,DEU,2021-07-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,6.62,-0.04,-0.6
+Germany,DEU,2021-08-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,5.62,-0.15,-2.6
+Germany,DEU,2021-09-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,5.09,0.2,4.09
+Germany,DEU,2021-10-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,3.4,1.13,49.78
+Germany,DEU,2021-11-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,1.17,-0.42,-26.42
+Germany,DEU,2021-12-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,0.75,0.04,5.63
+Germany,DEU,2022-01-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,1.27,0.62,95.38
+Germany,DEU,2022-02-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,2.64,0.53,25.12
+Germany,DEU,2022-03-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,5.78,1.38,31.36
+Germany,DEU,2022-04-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,6.17,0.34,5.83
+Germany,DEU,2022-05-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,7.93,1.65,26.27
+Germany,DEU,2022-06-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,8.32,0.76,10.05
+Germany,DEU,2022-07-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,8.22,1.6,24.17
+Germany,DEU,2022-08-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,7.54,1.92,34.16
+Germany,DEU,2022-09-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,4.89,-0.2,-3.93
+Germany,DEU,2022-10-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,3.72,0.32,9.41
+Germany,DEU,2022-11-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,1.86,0.69,58.97
+Germany,DEU,2022-12-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,0.78,0.03,4
+Germany,DEU,2023-01-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,1.47,0.2,15.75
+Germany,DEU,2023-02-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,2.74,0.1,3.79
+Germany,DEU,2023-03-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,4.11,-1.67,-28.89
+Germany,DEU,2023-04-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,5.78,-0.39,-6.32
+Germany,DEU,2023-05-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,8.13,0.2,2.52
+Germany,DEU,2023-06-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,8.91,0.59,7.09
+Germany,DEU,2023-07-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,7.93,-0.29,-3.53
+Germany,DEU,2023-08-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,6.85,-0.69,-9.15
+Germany,DEU,2023-09-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,6.85,1.96,40.08
+Germany,DEU,2023-10-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,3.82,0.1,2.69
+Germany,DEU,2023-11-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,2.06,0.2,10.75
+Germany,DEU,2023-12-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,1.37,0.59,75.64
+Germany,DEU,2024-01-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,1.97,0.5,34.01
+Germany,DEU,2024-02-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,2.75,0.01,0.36
+Germany,DEU,2024-03-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,5.11,1,24.33
+Germany,DEU,2024-04-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,6.68,0.9,15.57
+Germany,DEU,2024-05-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,9.14,1.01,12.42
+Germany,DEU,2024-06-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,9.43,0.52,5.84
+Germany,DEU,2024-07-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,10.27,2.34,29.51
+Germany,DEU,2024-08-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,9.74,2.89,42.19
+Germany,DEU,2024-09-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,6.99,0.14,2.04
+Germany,DEU,2024-10-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,4.44,0.62,16.23
+Germany,DEU,2024-11-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,2.06,0,0
+Germany,DEU,2024-12-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,1.21,-0.16,-11.68
+Germany,DEU,2025-01-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,1.88,-0.09,-4.57
+Germany,DEU,2025-02-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,3.35,0.6,21.82
+Germany,DEU,2025-03-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,7.55,2.44,47.75
+Germany,DEU,2025-04-01,Country,Europe,Europe,1,1,1,1,0,Electricity generation,Fuel,Solar,TWh,9.86,3.18,47.6
+United States of America,USA,2018-01-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,4.94,1.37,38.38
+United States of America,USA,2018-02-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,5.66,1.52,36.71
+United States of America,USA,2018-03-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,7.49,1,15.41
+United States of America,USA,2018-04-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,8.8,1.7,23.94
+United States of America,USA,2018-05-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,9.86,1.65,20.1
+United States of America,USA,2018-06-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,10.47,1.87,21.74
+United States of America,USA,2018-07-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,9.9,1.78,21.92
+United States of America,USA,2018-08-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,9.71,1.86,23.69
+United States of America,USA,2018-09-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,8.64,1.36,18.68
+United States of America,USA,2018-10-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,7.36,0.72,10.84
+United States of America,USA,2018-11-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,5.65,0.88,18.45
+United States of America,USA,2018-12-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,4.88,0.37,8.2
+United States of America,USA,2019-01-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,5.48,0.54,10.93
+United States of America,USA,2019-02-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,5.89,0.23,4.06
+United States of America,USA,2019-03-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,8.81,1.32,17.62
+United States of America,USA,2019-04-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,10,1.2,13.64
+United States of America,USA,2019-05-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,10.71,0.85,8.62
+United States of America,USA,2019-06-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,11.58,1.11,10.6
+United States of America,USA,2019-07-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,11.89,1.99,20.1
+United States of America,USA,2019-08-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,11.49,1.78,18.33
+United States of America,USA,2019-09-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,10.02,1.38,15.97
+United States of America,USA,2019-10-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,8.93,1.57,21.33
+United States of America,USA,2019-11-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,6.59,0.94,16.64
+United States of America,USA,2019-12-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,5.5,0.62,12.7
+United States of America,USA,2020-01-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,6.77,1.29,23.54
+United States of America,USA,2020-02-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,8.18,2.29,38.88
+United States of America,USA,2020-03-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,9.77,0.96,10.9
+United States of America,USA,2020-04-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,11.74,1.74,17.4
+United States of America,USA,2020-05-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,13.92,3.21,29.97
+United States of America,USA,2020-06-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,13.92,2.34,20.21
+United States of America,USA,2020-07-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,15.02,3.13,26.32
+United States of America,USA,2020-08-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,13.51,2.02,17.58
+United States of America,USA,2020-09-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,11.45,1.43,14.27
+United States of America,USA,2020-10-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,10.4,1.47,16.46
+United States of America,USA,2020-11-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,8.45,1.86,28.22
+United States of America,USA,2020-12-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,7.58,2.08,37.82
+United States of America,USA,2021-01-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,8.31,1.54,22.75
+United States of America,USA,2021-02-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,9.27,1.09,13.33
+United States of America,USA,2021-03-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,13.45,3.68,37.67
+United States of America,USA,2021-04-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,15.5,3.76,32.03
+United States of America,USA,2021-05-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,17.52,3.6,25.86
+United States of America,USA,2021-06-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,17.3,3.38,24.28
+United States of America,USA,2021-07-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,17.38,2.36,15.71
+United States of America,USA,2021-08-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,16.89,3.38,25.02
+United States of America,USA,2021-09-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,15.58,4.13,36.07
+United States of America,USA,2021-10-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,13.09,2.69,25.87
+United States of America,USA,2021-11-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,11.05,2.6,30.77
+United States of America,USA,2021-12-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,9.06,1.48,19.53
+United States of America,USA,2022-01-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,11.2,2.89,34.78
+United States of America,USA,2022-02-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,12.74,3.47,37.43
+United States of America,USA,2022-03-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,16.82,3.37,25.06
+United States of America,USA,2022-04-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,19.07,3.57,23.03
+United States of America,USA,2022-05-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,21.36,3.84,21.92
+United States of America,USA,2022-06-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,22.28,4.98,28.79
+United States of America,USA,2022-07-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,22.2,4.82,27.73
+United States of America,USA,2022-08-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,20.7,3.81,22.56
+United States of America,USA,2022-09-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,18.83,3.25,20.86
+United States of America,USA,2022-10-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,16.96,3.87,29.56
+United States of America,USA,2022-11-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,12.44,1.39,12.58
+United States of America,USA,2022-12-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,10.48,1.42,15.67
+United States of America,USA,2023-01-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,11.97,0.77,6.88
+United States of America,USA,2023-02-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,13.65,0.91,7.14
+United States of America,USA,2023-03-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,18.15,1.33,7.91
+United States of America,USA,2023-04-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,21.52,2.45,12.85
+United States of America,USA,2023-05-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,24.49,3.13,14.65
+United States of America,USA,2023-06-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,25.06,2.78,12.48
+United States of America,USA,2023-07-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,26.63,4.43,19.95
+United States of America,USA,2023-08-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,25.37,4.67,22.56
+United States of America,USA,2023-09-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,22.19,3.36,17.84
+United States of America,USA,2023-10-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,20.18,3.22,18.99
+United States of America,USA,2023-11-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,15.23,2.79,22.43
+United States of America,USA,2023-12-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,13.69,3.21,30.63
+United States of America,USA,2024-01-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,14.43,2.46,20.55
+United States of America,USA,2024-02-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,17.81,4.16,30.48
+United States of America,USA,2024-03-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,22.8,4.65,25.62
+United States of America,USA,2024-04-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,26.85,5.33,24.77
+United States of America,USA,2024-05-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,30.64,6.15,25.11
+United States of America,USA,2024-06-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,32.82,7.76,30.97
+United States of America,USA,2024-07-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,32.92,6.29,23.62
+United States of America,USA,2024-08-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,32.4,7.03,27.71
+United States of America,USA,2024-09-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,27.64,5.45,24.56
+United States of America,USA,2024-10-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,26.32,6.14,30.43
+United States of America,USA,2024-11-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,19.32,4.09,26.85
+United States of America,USA,2024-12-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,17.93,4.24,30.97
+United States of America,USA,2025-01-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,20.74,6.31,43.73
+United States of America,USA,2025-02-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,22.23,4.42,24.82
+United States of America,USA,2025-03-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,31.24,8.44,37.02
+United States of America,USA,2025-04-01,Country,North America,North America,0,1,1,1,0,Electricity generation,Fuel,Solar,TWh,35.6,8.75,32.59
+World,NA,2019-01-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,36.08,NA,NA
+World,NA,2019-02-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,40.69,NA,NA
+World,NA,2019-03-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,56.75,NA,NA
+World,NA,2019-04-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,63.44,NA,NA
+World,NA,2019-05-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,68.91,NA,NA
+World,NA,2019-06-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,70.61,NA,NA
+World,NA,2019-07-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,69.79,NA,NA
+World,NA,2019-08-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,70.18,NA,NA
+World,NA,2019-09-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,62.98,NA,NA
+World,NA,2019-10-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,56.43,NA,NA
+World,NA,2019-11-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,45.84,NA,NA
+World,NA,2019-12-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,43.1,NA,NA
+World,NA,2020-01-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,46.03,9.95,27.58
+World,NA,2020-02-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,51.09,10.4,25.56
+World,NA,2020-03-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,68.19,11.44,20.16
+World,NA,2020-04-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,79.02,15.58,24.56
+World,NA,2020-05-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,84.55,15.64,22.7
+World,NA,2020-06-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,81.11,10.5,14.87
+World,NA,2020-07-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,84.19,14.4,20.63
+World,NA,2020-08-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,83.8,13.62,19.41
+World,NA,2020-09-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,76.79,13.81,21.93
+World,NA,2020-10-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,66.66,10.23,18.13
+World,NA,2020-11-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,56.62,10.78,23.52
+World,NA,2020-12-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,52.18,9.08,21.07
+World,NA,2021-01-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,58.12,12.09,26.27
+World,NA,2021-02-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,63.88,12.79,25.03
+World,NA,2021-03-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,85.82,17.63,25.85
+World,NA,2021-04-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,91.72,12.7,16.07
+World,NA,2021-05-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,102.62,18.07,21.37
+World,NA,2021-06-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,102.74,21.63,26.67
+World,NA,2021-07-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,101.84,17.65,20.96
+World,NA,2021-08-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,100.86,17.06,20.36
+World,NA,2021-09-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,90.67,13.88,18.08
+World,NA,2021-10-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,83.62,16.96,25.44
+World,NA,2021-11-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,71.88,15.26,26.95
+World,NA,2021-12-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,68.5,16.32,31.28
+World,NA,2022-01-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,74.7,16.58,28.53
+World,NA,2022-02-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,80.1,16.22,25.39
+World,NA,2022-03-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,103.78,17.96,20.93
+World,NA,2022-04-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,116.64,24.92,27.17
+World,NA,2022-05-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,127.93,25.31,24.66
+World,NA,2022-06-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,128.4,25.66,24.98
+World,NA,2022-07-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,132.37,30.53,29.98
+World,NA,2022-08-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,129.21,28.35,28.11
+World,NA,2022-09-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,119.02,28.35,31.27
+World,NA,2022-10-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,108.42,24.8,29.66
+World,NA,2022-11-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,87.73,15.85,22.05
+World,NA,2022-12-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,80.98,12.48,18.22
+World,NA,2023-01-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,90.76,16.06,21.5
+World,NA,2023-02-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,98.6,18.5,23.1
+World,NA,2023-03-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,125.8,22.02,21.22
+World,NA,2023-04-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,137.2,20.56,17.63
+World,NA,2023-05-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,153.47,25.54,19.96
+World,NA,2023-06-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,159.71,31.31,24.38
+World,NA,2023-07-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,161.99,29.62,22.38
+World,NA,2023-08-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,163.58,34.37,26.6
+World,NA,2023-09-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,149.14,30.12,25.31
+World,NA,2023-10-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,138.18,29.76,27.45
+World,NA,2023-11-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,117.18,29.45,33.57
+World,NA,2023-12-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,107.45,26.47,32.69
+World,NA,2024-01-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,115.41,24.65,27.16
+World,NA,2024-02-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,126.22,27.62,28.01
+World,NA,2024-03-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,161.87,36.07,28.67
+World,NA,2024-04-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,178.82,41.62,30.34
+World,NA,2024-05-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,203.46,49.99,32.57
+World,NA,2024-06-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,205.42,45.71,28.62
+World,NA,2024-07-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,210.36,48.37,29.86
+World,NA,2024-08-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,217.28,53.7,32.83
+World,NA,2024-09-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,184.71,35.57,23.85
+World,NA,2024-10-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,171.07,32.89,23.8
+World,NA,2024-11-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,144.95,27.77,23.7
+World,NA,2024-12-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,143.28,35.83,33.35
+World,NA,2025-01-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,159.78,44.37,38.45
+World,NA,2025-02-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,166.97,40.75,32.28
+World,NA,2025-03-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,209.28,47.41,29.29
+World,NA,2025-04-01,Region,NA,NA,NA,NA,NA,NA,NA,Electricity generation,Fuel,Solar,TWh,232.81,53.99,30.19

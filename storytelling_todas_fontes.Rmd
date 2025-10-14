@@ -1,0 +1,418 @@
+---
+title: "Transição na geração de energia elétrica"
+subtitle: "Números e geografia da opção brasileira pela energia renovável"
+output: 
+  html_document:
+    code_folding: hide
+date: "2025-08-15"
+---
+
+```{r setup, include=TRUE}
+knitr::opts_chunk$set(echo = TRUE, message  = FALSE, warning = FALSE)
+
+library(tidyverse)
+library(colorspace)
+library(sp)
+library(sf)
+library(spData)
+library(patchwork)
+
+```
+
+
+```{r}
+
+#siga_empreendimentos_geracao <- readRDS("~/Github/geracao_energia_eletrica/siga_empreendimentos_geracao.rds")
+
+
+
+#siga_empreendimentos_geracao <- read_csv("siga_empreendimentos_geracao.csv")
+
+#siga_empreendimentos_geracao_open_data 
+
+siga_empreendimentos_geracao<- read_delim("https://dadosabertos.aneel.gov.br/dataset/6d90b77c-c5f5-4d81-bdec-7bc619494bb9/resource/2f65a1b0-19b8-4360-8238-b34ab4693d55/download/siga-empreendimentos-geracao-diario.csv", 
+                                            delim = ";", escape_double = FALSE, locale = locale(decimal_mark = ",", 
+                                                                                                grouping_mark = ".", encoding = "latin1"), 
+                                            trim_ws = TRUE) %>%
+   janitor::clean_names()
+
+
+
+data("world")
+
+mapa_brasil<- geobr::read_country(showProgress = FALSE)
+
+sedes<- geobr::read_municipal_seat(showProgress = FALSE)
+
+estados<- geobr::read_state(showProgress = FALSE, simplified = FALSE)
+
+
+# ide_nucleo_ceg <- 
+#   (siga_empreendimentos_geracao %>%
+#   filter(num_coord_e_empreendimento == 0) %>%
+#   select(ide_nucleo_ceg))$ide_nucleo_ceg
+# 
+# 
+# Munic_pios_com_C_digo_IBGE <- read_csv("Munic_pios_com_C_digo_IBGE.csv")
+# 
+# Munic_pios_com_C_digo_IBGE$ide_nucleo_ceg <- ide_nucleo_ceg
+
+
+biomas<- 
+  geobr::read_biomes(simplified = FALSE, showProgress = FALSE) %>%
+  filter(name_biome!= "Sistema Costeiro")
+  
+
+cores_tipo_combustivel<- c("#999999","#009E73" )
+cores_combustivel<- c("#D55E00","#56B4E9","#999999","#0072B2","#F0E442")
+cores_biomas<- c("#88902b","#ffd795","#f9e994","#b5ce94","#fef9d1", "#cbb3c3" )
+
+# usinas_coordenadas_ajustadas<-
+# siga_empreendimentos_geracao %>%
+#   inner_join(
+#     Munic_pios_com_C_digo_IBGE %>%
+#       rename(code_muni = codigo_ibge) %>%
+#       select(code_muni, ide_nucleo_ceg)
+#   ) %>%
+#   inner_join(
+#     sedes %>%
+#       rename(geometry = geom)
+#   ) %>%
+#   select(dsc_fase_usina, dsc_origem_combustivel, mda_potencia_outorgada_kw, mda_potencia_outorgada_kw,geometry) 
+#   
+# usinas_coordenadas_ajustadas$geometry <- st_transform(usinas_coordenadas_ajustadas$geometry,crs = 4326)
+
+coords_usinas<-
+  siga_empreendimentos_geracao %>%
+  st_as_sf(coords = c("num_coord_e_empreendimento" , "num_coord_n_empreendimento"),
+           crs = 4326) %>%
+  select(dsc_fase_usina, dsc_origem_combustivel, mda_potencia_outorgada_kw, mda_potencia_outorgada_kw,geometry) #%>%
+  #bind_rows(usinas_coordenadas_ajustadas)
+
+
+
+gera_dados_mapa<- function(){
+  coords_usinas %>%
+  filter(dsc_origem_combustivel != "Nuclear") %>%
+  mutate(fase = case_when(
+    dsc_fase_usina == "Operação" ~ "Em operação",
+    dsc_fase_usina != "Operação" ~ "Em desenvolvimento"
+  )) %>%
+  mutate(fase = factor(fase, levels = c("Em operação", "Em desenvolvimento"))) %>%
+  mutate(tipo_renovavel= case_when(
+    dsc_origem_combustivel == "Fóssil" ~ "Não renovável",
+    dsc_origem_combustivel != "Fóssil" ~ "Renovável",
+  )) 
+}
+
+gera_dados_mapa_estados<- function(){
+ estados %>%
+  inner_join(
+    siga_empreendimentos_geracao %>%
+      filter(dsc_origem_combustivel != "Nuclear") %>%
+      mutate(fase = case_when(
+        dsc_fase_usina == "Operação" ~ "Em operação",
+        dsc_fase_usina != "Operação" ~ "Em desenvolvimento"
+      )) %>%
+        mutate(fase = factor(fase, levels = c("Em operação", "Em desenvolvimento"))) %>%
+      summarise(total = sum(mda_potencia_outorgada_kw),
+                .by = c(sig_uf_principal, dsc_origem_combustivel, fase  )) %>%
+      rename(abbrev_state = sig_uf_principal)
+  )
+}
+
+gera_dados_grafico<- function(){
+  siga_empreendimentos_geracao %>%  
+  filter(dsc_origem_combustivel != "Nuclear") %>%
+  mutate(fase = case_when(
+    dsc_fase_usina == "Operação" ~ "Em operação",
+    dsc_fase_usina != "Operação" ~ "Em desenvolvimento"
+  )) %>%
+  mutate(fase = factor(fase, levels = c("Em operação", "Em desenvolvimento"))) %>%
+  mutate(tipo_renovavel= case_when(
+    dsc_origem_combustivel == "Fóssil" ~ "Não renovável",
+    dsc_origem_combustivel != "Fóssil" ~ "Renovável",
+  )) %>%
+  summarise(quantidade = n(),
+            total_outorgado = sum(mda_potencia_outorgada_kw),
+            .by = c(fase,tipo_renovavel, dsc_origem_combustivel))
+
+}
+
+data_geracao_dados<- format( siga_empreendimentos_geracao$dat_geracao_conjunto_dados[1], format = "%d/%m/%Y") 
+
+gera_dados_grafico() %>%
+  write_csv("dados_graficos_fontes.csv")
+
+cor_fundo<- "#D0D0D0"# "#F8F8F8"
+
+
+```
+
+## **Brasil: tradição renovável, futuro de baixo impacto**
+
+O Brasil sempre esteve à frente na geração de energia a partir de fontes renováveis. Durante décadas, grandes hidrelétricas foram o pilar da matriz elétrica nacional, garantindo uma participação limpa muito acima da média mundial. Essa tradição é um ativo valioso na corrida global para conter as mudanças climáticas.
+
+Desde meados da década passada, o país entrou em uma nova fase dessa história. Em 2025, **apenas 10% das usinas em operação** utilizam fontes não renováveis, e entre os projetos em desenvolvimento essa proporção cai para **0,5%**. O protagonismo passa para as fontes solar e eólica, que já representam **80%** das usinas instaladas e alcançam **95%** dos empreendimentos em desenvolvimento. Traduzindo as quantidades de usinas em potência instalada, as a junção eólica e fotovoltaica representam cerca de 23% da capacidade instalada do país. E já é muito.
+
+```{r fig.dpi= 300 }
+gera_dados_mapa() %>%
+  ggplot()+
+  geom_sf(data = world, fill= "lightgray" )+
+  geom_sf(data= mapa_brasil,
+          size=0.8,
+          alpha=1,
+          fill= "black") +
+  geom_sf( aes(fill= dsc_origem_combustivel ),
+           pch=21, 
+           alpha=1,
+           size =0.8,
+           
+           color= "black") +
+  scale_fill_manual(values = cores_combustivel) +
+  coord_sf(xlim = c(-31,-72), ylim=c(-35,5))+
+  theme_void() +
+  theme(
+    panel.background = element_rect(fill="#0077be"),
+    legend.position = "bottom",
+  ) + 
+  labs(
+    fill= "",
+    title = "Localização das usinas geradoras de energia elétrica",
+    subfilter = "Não renovável x renovável",
+    caption = paste0("Fonte: ANEEL (", data_geracao_dados,"). Elaboração: Fernando Barbalho") 
+  ) +
+  facet_wrap(fase+tipo_renovavel~., ncol=2)
+  
+```
+
+Mais dados confirmam que a transição não é apenas quantitativa, mas qualitativa. O número total de usinas crescerá **16%**, enquanto a potência outorgada aumentará **76%** --- impulsionada por usinas solares muito mais robustas, com potência média de **44 MW** nos projetos, contra apenas 1 MW nas atuais.
+
+```{r fig.dpi= 300, fig.height=7.5, fig.width=9}
+
+
+#dados_grafico_fontes <- read_csv("dados_grafico_fontes.csv")
+
+dados_grafico_fontes <- read_csv("dados_graficos_fontes.csv")
+#
+graf_quantidade<-
+  dados_grafico_fontes %>%
+  ggplot(aes(y=dsc_origem_combustivel, x= quantidade)) +
+  geom_col(aes( fill= tipo_renovavel )) +
+  geom_text(aes(x= quantidade+5, 
+                y= dsc_origem_combustivel,
+                label= quantidade,
+                color = tipo_renovavel), 
+            show.legend = FALSE,
+            hjust =0,
+            size= 3.5,
+            fontface = "bold")+
+  scale_fill_manual(values=cores_tipo_combustivel) +
+  scale_color_manual(values=cores_tipo_combustivel) +
+  scale_x_continuous(expand = expansion(mult = c(0.03, 0.12))) +  
+  theme_light() +
+  theme(
+    panel.background = element_rect(fill= "black"),
+    panel.grid = element_blank(),
+    strip.background = element_blank(),
+    strip.text = element_text(color = "black"),
+    legend.position = "none",
+    axis.text.x = element_blank()
+  ) +
+  labs(
+    title= "Quantidade de usinas",
+    fill="",
+    x="",
+    y=""
+  ) +
+  facet_wrap(fase~.) 
+
+  
+graf_outorgado<-
+dados_grafico_fontes %>%
+  ggplot(aes(y=dsc_origem_combustivel, x= total_outorgado/10^6)) +
+  geom_col(aes( fill= tipo_renovavel )) +
+  geom_text(aes(x= total_outorgado/10^6, 
+                y= dsc_origem_combustivel,
+                label= round(total_outorgado/10^6,0),
+                color = tipo_renovavel,
+                size= 10), 
+            hjust =0,
+            size= 3.5, 
+            show.legend = FALSE,
+            fontface = "bold")+
+  scale_fill_manual(values=cores_tipo_combustivel) +
+  scale_color_manual(values=cores_tipo_combustivel) +
+  scale_x_continuous(expand = expansion(mult = c(0.03, 0.08))) +  
+  theme_light() +
+  theme(
+    panel.background = element_rect(fill= "black"),
+    panel.grid = element_blank(),
+    strip.background = element_blank(),
+    strip.text = element_text(color = "black"),
+    legend.position = "bottom",
+    axis.text.x = element_blank(),
+    
+  ) +
+  labs(
+    title= "Potência outorgada (valores em milhões de KW)",
+    fill="",
+    caption = paste0("Fonte: ANEEL (", data_geracao_dados,"). Elaboração: Fernando Barbalho"), 
+    x="",
+    y=""
+  ) +
+  facet_wrap(fase~.) 
+
+  graf_quantidade / graf_outorgado
+  
+
+
+```
+
+A estratégia de transição brasileira tem aspectos de pioneirismo. Destaque ao programa PROINFA que atua no estímulo à nacionalização de empreendimentos da indústria de base de fontes alternativas. Um ponto importante das EOLs e UFVs ou da Transição em si é que as tecnologias propostas têm que ser de baixo custo e de replicação fácil. Ao migrar de grandes barragens para tecnologias mais distribuídas, o Brasil reduz impactos socioambientais e reforça sua contribuição para as metas climáticas.
+
+### **O mapa da expansão solar**
+
+A expansão da energia solar redefine o mapa da geração no Brasil. Minas Gerais lidera com **35 GW** em novos projetos solares, seguida por Bahia (**24 GW**), Piauí (**21 GW**) e Ceará (**16 GW**). Esses números refletem um avanço expressivo de estados com forte potencial para abrigar grandes empreendimentos fotovoltaicos, fortalecendo especialmente o Nordeste e parte do Sudeste como motores dessa nova etapa da transição energética.
+
+A radiação solar, destaca-se como uma fonte renovável que oferece energia renovável, sem causar danos ao meio ambiente. O Sol desempenha um papel fundamental na evaporação da água, contribuindo para a formação de reservatórios de rios e permitindo a geração de energia em hidrelétricas. Além disso, a circulação atmosférica impulsionada pela radiação solar possibilita a captura de energia eólica em parques eólicos. Essa abordagem sustentável ressalta a importância da energia solar como um recurso fundamental para a produção de eletricidade, aproveitando os elementos naturais de maneira eficiente.
+
+```{r fig.dpi=300}
+
+dados_sel<-
+  gera_dados_mapa_estados() %>%
+  filter(dsc_origem_combustivel == "Solar",
+         fase == "Em desenvolvimento",
+         abbrev_state %in% c("MG","BA","PI","CE"))
+
+
+gera_dados_mapa_estados() %>%
+  filter(dsc_origem_combustivel == "Solar") %>%
+  mutate(total = total/10^6) %>%
+  ggplot() +
+  geom_sf(data = world, fill= "lightgray" )+
+  geom_sf(data = mapa_brasil,
+          fill= "black",
+          color = "white" )+
+  geom_sf( aes( fill= total )) +
+  scale_fill_continuous_sequential(palette = "Heat 2") +
+  theme_void() +
+  theme(
+    panel.background = element_rect(fill="#0077be"),
+    legend.position = "bottom",
+    #strip.text = element_text(size=10),
+    plot.title = element_text( hjust=0.5)
+  ) +
+  labs(
+    fill= "Potência em GW",
+    size= "Potência em GW",
+    caption = paste0("Fonte: ANEEL (", data_geracao_dados,"). Elaboração: Fernando Barbalho") ,
+    title= "Potência total outorgada por estado"
+  )+
+  coord_sf(xlim = c(-31,-72), ylim=c(-35,5)) +
+  facet_wrap(fase+dsc_origem_combustivel~., nrow = 1)
+```
+
+Se há avanços, há ainda pontos de preocupação. O Pará ilustra, de forma emblemática, os dilemas da mudança de paradigma. Lar das duas maiores hidrelétricas do país --- **Belo Monte** (11 GW) e **Tucuruí** (8,5 GW) ---, o estado não conta com novos projetos hídricos em desenvolvimento. Mais amplamente, a região Norte sitntetiza os desafios para as políticas públicas de geração e consumo de energia. Do lado da oferta, não há expansão significativa nem da fonte hídrica nem de alternativas renováveis. Ao mesmo tempo, muitas comunidades isoladas continuam carentes de soluções confiáveis e de baixo impacto ambiental para geração e distribuição de eletricidade.
+
+```{r fig.dpi=300}
+
+
+gera_dados_mapa_estados() %>%
+  mutate(total = total/10^6) %>%
+  ggplot() +
+  geom_sf(data = world, fill= "lightgray" )+
+  geom_sf(data = mapa_brasil,
+          fill= "black",
+          color = "white" )+
+  geom_sf( aes( fill= total )) +
+  scale_fill_continuous_sequential(palette = "Heat 2") +
+  theme_void() +
+  theme(
+    panel.background = element_rect(fill="#0077be"),
+    legend.position = "bottom",
+    #strip.text = element_text(size=16),
+    #title = element_text(size=20)
+  ) +
+  labs(
+    fill= "Potência em GW",
+    size= "Potência em GW",
+    caption = paste0("Fonte: ANEEL (", data_geracao_dados,"). Elaboração: Fernando Barbalho") ,
+    title= "Potência total gerada por estado"
+  )+
+  coord_sf(xlim = c(-31,-72), ylim=c(-35,5)) +
+  facet_wrap(fase+dsc_origem_combustivel~., nrow = 2)
+
+
+```
+
+
+```{r fig.dpi= 300}
+
+dados_grafico_historia<-
+  siga_empreendimentos_geracao %>%
+  filter( dsc_origem_combustivel != "Nuclear" ) %>% 
+  filter(dsc_fase_usina == "Operação"  ) %>%
+  mutate(ano_inicio = lubridate::year(dat_entrada_operacao)) %>%
+  filter( ano_inicio> 1900) %>%
+  summarise( total_outorgado  = sum(mda_potencia_outorgada_kw), #
+            .by = c(ano_inicio, dsc_origem_combustivel)) %>%
+  mutate(total_outorgado = total_outorgado/10^3)
+
+dados_2016 <-
+  dados_grafico_historia %>%
+  filter(ano_inicio == 2016) %>%
+  summarise(total_outorgado = sum(total_outorgado),
+            .by = ano_inicio)
+
+ordem_origem_combustivel<- 
+  dados_grafico_historia %>%
+  filter(between(ano_inicio, 1960, 2000)) %>%
+  summarise(total = sum(total_outorgado)) %>%
+  arrange(desc(total))
+
+
+
+dados_grafico_historia %>%
+  ggplot(aes(x=ano_inicio,y=total_outorgado)) +
+  geom_area(aes(fill= dsc_origem_combustivel), 
+            position = "stack", 
+            outline.type = "full", 
+            color= "#404040",
+            linewidth = 0.1,
+            show.legend = TRUE) +
+  geom_text(data = dados_2016, 
+            aes(label = str_wrap("Em 2016 entra em operação Belo Monte. Potência outorgada atual: 11 mil GW   ", 100) ),
+            hjust = 1.01)  +
+  geom_point(data = dados_2016,
+             size = 2) +
+  geom_text(data = tibble(ano_inicio =1960, total_outorgado = 7000), 
+            label = str_wrap("Das usinas em operação desde 1960–2000, 90% da potência instalada é de fonte hídrica.",29),
+            hjust = 0.5) +
+  
+  theme_light() +
+  scale_fill_manual(values = cores_combustivel) +
+  scale_y_continuous(labels = scales::comma_format(big.mark = ".")) +
+  theme(
+    panel.background =  element_rect( fill= "#F5F5F5"),
+    panel.grid =  element_blank(),
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    legend.background = element_rect(fill= cor_fundo),
+    plot.background = element_rect(fill =cor_fundo ),
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 12, face = "italic"),
+    text = element_text(family = "Noto Sans", colour = "#324e5a")
+  ) +
+  labs(
+    title = "Ecos do passado na energia de hoje",
+    subtitle =str_wrap("Uma linha do tempo das fontes que moldaram cada gigawatt outorgado",70)  ,
+    caption = "Fonte: ANEEL. Elaboração: Fernando Barbalho",
+    y= "Potência outorgada em GW",
+    x= ""
+  )
+
+
+
+```
+

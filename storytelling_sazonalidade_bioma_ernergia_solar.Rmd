@@ -1,0 +1,422 @@
+---
+title: "Brasil Solar: Estabilidade Sazonal e Expansão Estratégica na Diagonal da América do Sul"
+output: html_document
+date: "2025-08-15"
+---
+
+```{r setup, include=TRUE}
+
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(tidyverse)
+library(colorspace)
+library(sp)
+library(sf)
+library(spData)
+library(patchwork)
+library(forecast)
+
+#siga_empreendimentos_geracao <- readRDS("/siga_empreendimentos_geracao.rds")
+siga_empreendimentos_geracao <- read_csv("siga_empreendimentos_geracao.csv")
+
+dados_grafico_ember <- readRDS("dados_grafico_ember.rds")
+
+ide_nucleo_ceg <- 
+  (siga_empreendimentos_geracao %>%
+  filter(num_coord_e_empreendimento == 0) %>%
+  select(ide_nucleo_ceg))$ide_nucleo_ceg
+
+
+Munic_pios_com_C_digo_IBGE <- read_csv("Munic_pios_com_C_digo_IBGE.csv")
+
+Munic_pios_com_C_digo_IBGE$ide_nucleo_ceg <- ide_nucleo_ceg
+
+data("world")
+
+mapa_brasil<- geobr::read_country()
+
+sedes<- geobr::read_municipal_seat()
+
+estados<- geobr::read_state()
+
+biomas<- 
+  geobr::read_biomes(simplified = FALSE) %>%
+  filter(name_biome!= "Sistema Costeiro")
+  
+
+cores_tipo_combustivel<- c("#999999","#009E73" )
+cores_combustivel<- c("#D55E00","#56B4E9","#999999","#0072B2","#F0E442")
+cores_biomas<- c("#88902b","#ffd795","#f9e994","#b5ce94","#fef9d1", "#cbb3c3" )
+
+usinas_coordenadas_ajustadas<-
+siga_empreendimentos_geracao %>%
+  inner_join(
+    Munic_pios_com_C_digo_IBGE %>%
+      rename(code_muni = codigo_ibge) %>%
+      select(code_muni, ide_nucleo_ceg)
+  ) %>%
+  inner_join(
+    sedes %>%
+      rename(geometry = geom)
+  ) %>%
+  select(dsc_fase_usina, dsc_origem_combustivel, mda_potencia_outorgada_kw, mda_potencia_outorgada_kw,geometry) 
+  
+usinas_coordenadas_ajustadas$geometry <- st_transform(usinas_coordenadas_ajustadas$geometry,crs = 4326)
+
+coords_usinas<-
+  siga_empreendimentos_geracao %>%
+  st_as_sf(coords = c("num_coord_e_empreendimento" , "num_coord_n_empreendimento"),
+           crs = 4326) %>%
+  select(dsc_fase_usina, dsc_origem_combustivel, mda_potencia_outorgada_kw, mda_potencia_outorgada_kw,geometry) %>%
+  bind_rows(usinas_coordenadas_ajustadas)
+
+areas <-
+  unique(dados_grafico_ember$area)
+
+
+gera_dados_mapa<- function(){
+  coords_usinas %>%
+  filter(dsc_origem_combustivel != "Nuclear") %>%
+  mutate(fase = case_when(
+    dsc_fase_usina == "Operação" ~ "Em operação",
+    dsc_fase_usina != "Operação" ~ "Em desenvolvimento"
+  )) %>%
+  mutate(fase = factor(fase, levels = c("Em operação", "Em desenvolvimento"))) %>%
+  mutate(tipo_renovavel= case_when(
+    dsc_origem_combustivel == "Fóssil" ~ "Não renovável",
+    dsc_origem_combustivel != "Fóssil" ~ "Renovável",
+  )) 
+}
+
+gera_dados_mapa_estados<- function(){
+ estados %>%
+  inner_join(
+    siga_empreendimentos_geracao %>%
+      filter(dsc_origem_combustivel != "Nuclear") %>%
+      mutate(fase = case_when(
+        dsc_fase_usina == "Operação" ~ "Em operação",
+        dsc_fase_usina != "Operação" ~ "Em desenvolvimento"
+      )) %>%
+        mutate(fase = factor(fase, levels = c("Em operação", "Em desenvolvimento"))) %>%
+      summarise(total = sum(mda_potencia_outorgada_kw),
+                .by = c(sig_uf_principal, dsc_origem_combustivel, fase  )) %>%
+      rename(abbrev_state = sig_uf_principal)
+  )
+}
+
+gera_dados_grafico<- function(){
+  siga_empreendimentos_geracao %>%  
+  filter(dsc_origem_combustivel != "Nuclear") %>%
+  mutate(fase = case_when(
+    dsc_fase_usina == "Operação" ~ "Em operação",
+    dsc_fase_usina != "Operação" ~ "Em desenvolvimento"
+  )) %>%
+  mutate(fase = factor(fase, levels = c("Em operação", "Em desenvolvimento"))) %>%
+  mutate(tipo_renovavel= case_when(
+    dsc_origem_combustivel == "Fóssil" ~ "Não renovável",
+    dsc_origem_combustivel != "Fóssil" ~ "Renovável",
+  )) %>%
+  summarise(quantidade = n(),
+            total_outorgado = sum(mda_potencia_outorgada_kw),
+            .by = c(fase,tipo_renovavel, dsc_origem_combustivel))
+
+}
+
+tema<- function(titulo, subtitulo = NULL){
+  theme_void() +
+  theme(
+    panel.background = element_rect(fill="#0077be")
+  ) +
+  labs(
+    title = titulo,
+    subtitle = subtitulo,
+    caption = "Fonte: ANEEL. Elaboração: Fernando Barbalho"
+  ) 
+}  
+
+dados_grafico_ember <- readRDS("dados_grafico_ember.rds")
+
+
+forca_tendencia <- function(serie){
+  tendencia<- 
+    serie$data %>%
+    filter(parts=="trend")
+
+  remanescente<- 
+    serie$data %>%
+    filter(parts=="remainder")
+  
+  tend_rem<-
+    bind_rows(tendencia, remanescente)
+  
+  proporcao_variancias<-
+    var(remanescente$y)/var(tend_rem$y)
+    
+    
+  max(0, 1- proporcao_variancias  )
+  
+}
+
+
+forca_sazonalidade <- function(serie){
+  sazonalidade<- 
+    serie$data %>%
+    filter(parts=="seasonal")
+  
+  remanescente<- 
+    serie$data %>%
+    filter(parts=="remainder")
+  
+  sazon_rem<-
+    bind_rows(sazonalidade, remanescente)
+  
+  proporcao_variancias<-
+    var(remanescente$y)/var(sazon_rem$y)
+  
+  
+  max(0, 1- proporcao_variancias  )
+  
+}
+
+
+decompoe_serie_pais<- function(area_nome){
+  
+  dados_ts <-
+    (dados_grafico_ember %>%
+       filter(area == area_nome) %>%
+       select(value))$value
+  
+  
+  
+  ts(dados_ts, frequency = 12)%>%
+    stl(t.window=12, s.window="periodic", robust=TRUE) %>%
+    autoplot()
+  
+  
+}
+
+```
+
+## **Sol constante: a vantagem comparativa brasileira na energia solar**
+
+"*Moro num país tropical, abençoado por Deus e bonito por natureza*" --- a célebre frase de Jorge Ben poderia muito bem ser o ponto de partida para explicar por que o Brasil desponta no cenário global da energia solar.
+
+Enquanto países como a Alemanha veem sua produção solar despencar nas mudanças de estação, o Brasil mantém uma trajetória de geração estável ao longo das sucessões de equinócios e solstícios. Os dados da Ember mostram que, mesmo no inverno, não há quedas significativas na potência gerada --- um privilégio climático e geográfico que ajuda a dar previsibilidade e segurança ao setor elétrico.
+
+Outro efeito da blindagem dos efeitos sazonais pode ser visto na comparação entre as curvas em vermelho que mostram as tendências. O Brasil associa-se a uma curva que praticamente não é remodelada pelos efeitos das estações e com inclinação mais acentuada que a dos outros países.
+
+```{r fig.dpi= 300}
+
+tendencias<- 
+  purrr::map_dfr(areas, function(nome_area){
+   
+   serie<- 
+   decompoe_serie_pais(nome_area)
+   
+   tendencia<-
+   serie$data %>%
+    filter(parts=="trend")
+   
+   tendencia$area <- nome_area
+   
+   tendencia$date <-
+     (dados_grafico_ember %>%
+       filter(area == nome_area))$date
+   
+   tendencia$value = tendencia$y
+   
+   tendencia
+
+  })
+
+dados_grafico_ember %>%
+  ggplot(aes(x=date, y=value)) +
+  geom_area(fill = "#F0E442") +
+  geom_line(data = tendencias, color= "red", size =1.2) +
+  geom_text(data = tibble(area= "Brazil", date= as.Date("2021-01-01"),value=7),
+            aes(label= str_wrap("Sazonalidades climáticas com baixo impacto",20)),
+            color = "white")+
+  geom_text(data = tibble(area= "Brazil", date= as.Date("2021-06-01"),value=1),
+            aes(label= str_wrap("Tendência",20)),
+            color = "red",
+            hjust =0,
+            fontface = "bold")+
+  theme_light() +
+  theme(
+    plot.title = element_text(face = "bold", size=14, hjust = 0.5),
+    panel.grid = element_blank(),
+    panel.background = element_rect(fill="black"),
+    strip.background = element_rect(fill = "black")
+  ) +
+  labs(
+    title = "Energia Solar: Série temporal de geração",
+    y= "TwH",
+    x="",
+    caption =  "Fonte: EMBER. Dados coletados em Maio de 2025. Elaboração: Fernando Barbalho"
+  ) +
+  facet_wrap(area~., scales= "free_y")
+
+```
+
+```{r}
+
+decompoe_serie_pais("Brazil")
+```
+
+
+
+```{r}
+
+decompoe_serie_pais("Germany")
+```
+
+
+
+Usando técnicas de séries temporais é possível medir a força da sazonalidade e da tendência associadas a cada um dos gráficos acima. Essa força está associada a um índice que varia entre zero (menor força) e um (maior força). Veja o resultado desse cálculo.
+
+```{r fig.dpi= 300, fig.width=8.5}
+
+
+season_trend<-
+  purrr::map_dfr(areas, function(area){
+    
+    #print(area)
+    
+    dados_area<- decompoe_serie_pais(area)
+      
+    tibble(area = area, sazonalidade = forca_sazonalidade(dados_area), tendencia = forca_tendencia(dados_area))
+    
+  })
+
+dados_grafico<-
+  season_trend %>%
+  pivot_longer(cols = sazonalidade:tendencia, names_to = "forca", values_to = "valor") %>%
+  mutate(forca = ifelse(forca == "tendencia", "Tendência", "Sazonalidade")) 
+
+
+graf1<-
+  season_trend %>%
+  mutate(area = reorder(area, sazonalidade)) %>%
+  ggplot(aes(x= sazonalidade, y=area )) +
+  geom_col(aes(fill= sazonalidade), color="lightgray", show.legend = FALSE)+
+  geom_text(aes(label = round(sazonalidade,2)),
+            color = "black",
+            hjust= 1,
+            fontface = "bold") +
+  scale_fill_continuous_sequential(palette = "Heat 2") +
+  theme_light() +
+  theme(
+    plot.title = element_text(face = "bold", size=14, hjust = 0.5),
+    panel.grid = element_blank(),
+    panel.background = element_rect(fill="black"),
+    strip.background = element_rect(fill = "black"),
+    axis.text.x = element_blank()
+  ) +
+  labs(
+    title = "Força da sazonalidade",
+    y= "",
+    x="",
+    #caption =  "Fonte: EMBER. Elaboração: Fernando Barbalho"
+  )
+
+graf2<-
+  season_trend %>%
+  mutate(area = reorder(area, tendencia)) %>%
+  ggplot(aes(x= tendencia, y=area )) +
+  geom_col(aes(fill= tendencia), color="lightgray", show.legend = FALSE)+
+  geom_text(aes(label = round(tendencia,2)),
+            color = "black",
+            hjust= 1,
+            fontface = "bold") +
+  scale_fill_continuous_sequential(palette = "Heat 2") +
+  theme_light() +
+  theme(
+    plot.title = element_text(face = "bold", size=14, hjust = 0.5),
+    panel.grid = element_blank(),
+    panel.background = element_rect(fill="black"),
+    strip.background = element_rect(fill = "black"),
+    axis.text.x = element_blank()
+  ) +
+  labs(
+    title = "Força da tendência",
+    y= "",
+    x="",
+    caption =  "Fonte: EMBER. Elaboração: Fernando Barbalho"
+  )
+
+
+graf1 + graf2
+
+```
+
+O gráfico da esquerda mostra que a sazonalidade não é relevante na geração de energia solar no Brasil. O cenário é distinto em outros países, principalmente na Alemanha, líder do ranking, onde as variações sazonais são bem mais acentuadas. Já o segundo gráfico evidencia que todas as áreas analisadas apresentam forte tendência de crescimento, reforçando que a energia solar se consolida como uma aposta estratégica para a transição energética, independentemente da latitude dos países.
+
+A opção mundial crescente da energia solar é uma boa notícia frente a ataques que a legitimidade das fontes de energia renovável vêm sofrendo. A plausibilidade das fotovoltáicas deve ser associada à diversidade e complementaridade das fontes de energia, especialmente a hídrica ainda a mais eficiente no Brasil. Em síntese: o claro entendimento do papel das energias renováveis no quadro geral é vital para enfrentamento das ameaças cllimáticas.
+
+### **A geografia como aliada**
+
+O mapa da expansão solar revela uma transformação em andamento:
+
+-   **Usinas em operação** --- espalhadas por todos os biomas, mesmo no Pantanal e Amazônia, onde se observam focos de concentração de milhares de unidades de baixa potência.
+
+-   **Novos empreendimentos** --- concentram-se principalmente na porção brasileira da chamada *diagonal da América do Sul*, que cruza Caatinga e Cerrado. Essa faixa apresenta alta incidência solar, baixa nebulosidade e extensas áreas disponíveis com relativo baixo impacto ambiental, tornando-se o epicentro da próxima onda de crescimento. Vale observar pelo tamanho do círculo que essas novas geradoras apresentam potência homologada em valores bem mais elevados do que as em operação atualmente.
+
+```{r fig.dpi= 300}
+
+    gera_dados_mapa() %>%
+      mutate(mda_potencia_outorgada_kw = mda_potencia_outorgada_kw/10^3) %>%
+      filter(dsc_origem_combustivel=="Solar") %>%
+      ggplot()+
+      geom_sf(data = world, fill= "lightgray" )+
+      geom_sf(data = mapa_brasil,
+              fill= "black",
+              color = NA )+
+      geom_sf(data= biomas[1,],
+              fill= cores_biomas[1],
+              color = NA) +
+      geom_sf(data= biomas[2,],
+              fill= cores_biomas[2],
+              color = NA) +
+      geom_sf(data= biomas[3,],
+              fill= cores_biomas[3],
+              color = NA) +
+        geom_sf(data= biomas[4,],
+              fill= cores_biomas[4],
+              color = NA) +
+      geom_sf(data= biomas[5,],
+              fill= cores_biomas[5],
+              color = NA) +
+      geom_sf(data= biomas[6,],
+              fill= cores_biomas[6],
+              color = NA) +
+
+      geom_sf( aes( size= mda_potencia_outorgada_kw ),
+               pch=21, 
+               alpha=1,
+               fill="#F0E442", #"#D55E00"
+               color = "#D55E00") + #AD1A1A"
+      #scale_fill_continuous_sequential(palette = "Heat 2") +
+      coord_sf(xlim = c(-31,-72), ylim=c(-35,5))+
+      theme_void() +
+      theme(
+        panel.background = element_rect(fill="#0077be"),
+        legend.position = "bottom",
+        #strip.text = element_text(size=16),
+        #title = element_text(size=20)
+        
+      ) + 
+      labs(
+        fill= "Potência em MW",
+        size= "Potência em MW",
+        caption = "Fonte: ANEEL (02/02/2025). Elaboração: Fernando Barbalho em 13/02/2025",
+        title = "Distribuição da potência gerada entre os seis biomas terrestres"
+      ) +
+      facet_wrap(fase+dsc_origem_combustivel~.)
+
+
+```
+
+### **O futuro que já começou**
+
+O contraste entre a distribuição atual e os projetos em desenvolvimento sugere que está em curso uma mudança estratégica: maior foco nas regiões com melhor performance solar e menor impacto sazonal. Dados do ONS ajudam a dar uma dimensão do potencial da energia solar. No Brasil os maiores índice de irradiação solar localizam-se no sudoeste da **Bahia**, com valores entre **2000 e 2300 kWh/m2**. A região Sul é onde há menos irradiação (1500 a 1700 kW/m2). Se compararmos com a Europa, os maiores valores daquele continente ficam em torno de 1700 kW/m2 no sul da Espanha.
+
+A geografia estratégica da expansão da energia solar pode aumentar a competitividade brasileira no setor, atraindo investimentos e fortalecendo o papel do país na transição energética global. Por outro lado, há a necessidade de diálogos mais frequentes com as comunidades que abrigam os projetos de energia renovável: quais são suas demandas, os seus receios e as salvaguardas propostas aos projetos. A legitimidade se conquista em entender e avançar nas pautas das várias partes interessadas. Esse pode ser um tema para uma próxima história de dados.
