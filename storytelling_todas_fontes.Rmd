@@ -141,14 +141,16 @@ gera_dados_grafico<- function(){
 
 data_geracao_dados<- format( siga_empreendimentos_geracao$dat_geracao_conjunto_dados[1], format = "%d/%m/%Y") 
 
-gera_dados_grafico() %>%
-  write_csv("dados_graficos_fontes.csv")
+#gera_dados_grafico() %>%
+ # write_csv("dados_graficos_fontes.csv")
 
 cor_fundo<- "#D0D0D0"# "#F8F8F8"
 
 cor_fundo_painel<- "#F5F5F5"
 
 cor_fundo_estados<- "#696969"
+
+cor_fundo_mapa_pontos <- "#2B2B2B" #"#505050"
 
 cor_texto<- "#324e5a"
 
@@ -161,30 +163,34 @@ O Brasil sempre esteve à frente na geração de energia a partir de fontes reno
 
 Desde meados da década passada, o país entrou em uma nova fase dessa história. Em 2025, **apenas 10% das usinas em operação** utilizam fontes não renováveis, e entre os projetos em desenvolvimento essa proporção cai para **0,5%**. O protagonismo passa para as fontes solar e eólica, que já representam **80%** das usinas instaladas e alcançam **95%** dos empreendimentos em desenvolvimento. Traduzindo as quantidades de usinas em potência instalada, as a junção eólica e fotovoltaica representam cerca de 23% da capacidade instalada do país. E já é muito.
 
-```{r fig.dpi= 300 }
+```{r fig.dpi= 300, fig.height=7.5, fig.width=9 }
+
 gera_dados_mapa() %>%
   ggplot()+
   geom_sf(data = world, fill= "lightgray" )+
   geom_sf(data= mapa_brasil,
-          size=0.8,
           alpha=1,
-          fill= "black") +
+          fill= cor_fundo_mapa_pontos) +
   geom_sf( aes(fill= dsc_origem_combustivel ),
            pch=21, 
            alpha=1,
-           size =0.8,
-           
-           color= "black") +
+           color= cor_fundo_mapa_pontos) +
   scale_fill_manual(values = cores_combustivel) +
   coord_sf(xlim = c(-31,-72), ylim=c(-35,5))+
   theme_void() +
   theme(
     panel.background = element_rect(fill="#0077be"),
     legend.position = "bottom",
+    legend.background = element_rect(fill= cor_fundo),
+    plot.background = element_rect(fill =cor_fundo ),
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 12, face = "italic"),
+    text = element_text(family = "Noto Sans", colour = cor_texto),
+    strip.text = element_text(size= 8, face ="bold")
   ) + 
   labs(
     fill= "",
-    title = "Localização das usinas geradoras de energia elétrica",
+    title = " Localização das usinas geradoras de energia elétrica",
     caption = paste0("Fonte: ANEEL (", data_geracao_dados,"). Elaboração: Fernando Barbalho") 
   ) +
   facet_wrap(fase+tipo_renovavel~., ncol=2)
@@ -198,7 +204,7 @@ Mais dados confirmam que a transição não é apenas quantitativa, mas qualitat
 
 #dados_grafico_fontes <- read_csv("dados_grafico_fontes.csv")
 
-dados_grafico_fontes <- read_csv("dados_graficos_fontes.csv")
+dados_grafico_fontes <- gera_dados_grafico() #read_csv("dados_graficos_fontes.csv")
 #
 graf_quantidade<-
   dados_grafico_fontes %>%
@@ -206,14 +212,14 @@ graf_quantidade<-
   geom_col(aes( fill= tipo_renovavel ), color ="black") +
   geom_text(aes(x= quantidade, 
                 y= dsc_origem_combustivel,
-                label= paste0(" ",quantidade) ,
+                label= paste0(" ", format(quantidade, big.mark = ".") ) ,
                 color = tipo_renovavel), 
             show.legend = FALSE,
             hjust =0,
             fontface = "bold")+
   scale_fill_manual(values=cores_tipo_combustivel) +
   scale_color_manual(values=cores_tipo_combustivel) +
-  scale_x_continuous(expand = expansion(mult = c(0.03, 0.15))) +  
+  scale_x_continuous(expand = expansion(mult = c(0.03, 0.17))) +  
   theme_light()  +
   theme(
     panel.background =  element_rect( fill= cor_fundo_painel),
@@ -245,14 +251,14 @@ dados_grafico_fontes %>%
   geom_col(aes( fill= tipo_renovavel ), color ="black") +
   geom_text(aes(x= total_outorgado/10^6, 
                 y= dsc_origem_combustivel,
-                label=paste0(" ", round(total_outorgado/10^6,0))  ,
+                label=paste0(" ", format(round(total_outorgado/10^6,0), big.mark   = ".") )  ,
                 color = tipo_renovavel), 
             hjust =0, 
             show.legend = FALSE,
             fontface = "bold")+
   scale_fill_manual(values=cores_tipo_combustivel) +
   scale_color_manual(values=cores_tipo_combustivel) +
-  scale_x_continuous(expand = expansion(mult = c(0.03, 0.095))) +  
+  scale_x_continuous(expand = expansion(mult = c(0.03, 0.09))) +  
   theme_light() +
   theme(
     panel.background =  element_rect( fill= cor_fundo_painel),
@@ -359,7 +365,7 @@ gera_dados_mapa_estados() %>%
   labs(
     fill= "Potência em GW",
     caption = paste0("Fonte: ANEEL (", data_geracao_dados,"). Elaboração: Fernando Barbalho") ,
-    title= " Potência total gerada por estado"
+    title= " Potência total outorgada por estado"
   )+
   coord_sf(xlim = c(-31,-72), ylim=c(-35,5)) +
   facet_wrap(fase+dsc_origem_combustivel~., nrow = 2)
@@ -446,7 +452,7 @@ dados_grafico_historia %>%
     text = element_text(family = "Noto Sans", colour = cor_texto)
   ) +
   labs(
-    title = "Ecos do passado na energia de hoje",
+    title = "Ecos do passado na energia elétrica de hoje",
     subtitle =str_wrap("Uma linha do tempo das fontes que moldaram cada gigawatt outorgado",70)  ,
     caption = "Fonte: ANEEL. Elaboração: Fernando Barbalho. Consultoria: Sérgio Leite (ANEEL)",
     y= "Potência outorgada em GW",
