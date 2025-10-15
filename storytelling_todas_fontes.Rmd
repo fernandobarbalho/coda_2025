@@ -146,6 +146,12 @@ gera_dados_grafico() %>%
 
 cor_fundo<- "#D0D0D0"# "#F8F8F8"
 
+cor_fundo_painel<- "#F5F5F5"
+
+cor_fundo_estados<- "#696969"
+
+cor_texto<- "#324e5a"
+
 
 ```
 
@@ -179,7 +185,6 @@ gera_dados_mapa() %>%
   labs(
     fill= "",
     title = "Localização das usinas geradoras de energia elétrica",
-    subfilter = "Não renovável x renovável",
     caption = paste0("Fonte: ANEEL (", data_geracao_dados,"). Elaboração: Fernando Barbalho") 
   ) +
   facet_wrap(fase+tipo_renovavel~., ncol=2)
@@ -198,26 +203,32 @@ dados_grafico_fontes <- read_csv("dados_graficos_fontes.csv")
 graf_quantidade<-
   dados_grafico_fontes %>%
   ggplot(aes(y=dsc_origem_combustivel, x= quantidade)) +
-  geom_col(aes( fill= tipo_renovavel )) +
-  geom_text(aes(x= quantidade+5, 
+  geom_col(aes( fill= tipo_renovavel ), color ="black") +
+  geom_text(aes(x= quantidade, 
                 y= dsc_origem_combustivel,
-                label= quantidade,
+                label= paste0(" ",quantidade) ,
                 color = tipo_renovavel), 
             show.legend = FALSE,
             hjust =0,
-            size= 3.5,
             fontface = "bold")+
   scale_fill_manual(values=cores_tipo_combustivel) +
   scale_color_manual(values=cores_tipo_combustivel) +
-  scale_x_continuous(expand = expansion(mult = c(0.03, 0.12))) +  
-  theme_light() +
+  scale_x_continuous(expand = expansion(mult = c(0.03, 0.15))) +  
+  theme_light()  +
   theme(
-    panel.background = element_rect(fill= "black"),
-    panel.grid = element_blank(),
+    panel.background =  element_rect( fill= cor_fundo_painel),
+    panel.grid =  element_blank(),
     strip.background = element_blank(),
-    strip.text = element_text(color = "black"),
-    legend.position = "none",
-    axis.text.x = element_blank()
+    strip.text = element_text(face = "bold", colour = cor_texto),
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    legend.background = element_rect(fill= cor_fundo),
+    axis.text.x = element_blank(),
+    plot.background = element_rect(fill =cor_fundo ),
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 12, face = "italic"),
+    text = element_text(family = "Noto Sans", colour = cor_texto)
+    
   ) +
   labs(
     title= "Quantidade de usinas",
@@ -231,27 +242,31 @@ graf_quantidade<-
 graf_outorgado<-
 dados_grafico_fontes %>%
   ggplot(aes(y=dsc_origem_combustivel, x= total_outorgado/10^6)) +
-  geom_col(aes( fill= tipo_renovavel )) +
+  geom_col(aes( fill= tipo_renovavel ), color ="black") +
   geom_text(aes(x= total_outorgado/10^6, 
                 y= dsc_origem_combustivel,
-                label= round(total_outorgado/10^6,0),
-                color = tipo_renovavel,
-                size= 10), 
-            hjust =0,
-            size= 3.5, 
+                label=paste0(" ", round(total_outorgado/10^6,0))  ,
+                color = tipo_renovavel), 
+            hjust =0, 
             show.legend = FALSE,
             fontface = "bold")+
   scale_fill_manual(values=cores_tipo_combustivel) +
   scale_color_manual(values=cores_tipo_combustivel) +
-  scale_x_continuous(expand = expansion(mult = c(0.03, 0.08))) +  
+  scale_x_continuous(expand = expansion(mult = c(0.03, 0.095))) +  
   theme_light() +
   theme(
-    panel.background = element_rect(fill= "black"),
-    panel.grid = element_blank(),
+    panel.background =  element_rect( fill= cor_fundo_painel),
+    panel.grid =  element_blank(),
     strip.background = element_blank(),
-    strip.text = element_text(color = "black"),
+    strip.text = element_text(face = "bold", colour = cor_texto),
     legend.position = "bottom",
+    legend.title = element_blank(),
+    legend.background = element_rect(fill= cor_fundo),
     axis.text.x = element_blank(),
+    plot.background = element_rect(fill =cor_fundo ),
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 12, face = "italic"),
+    text = element_text(family = "Noto Sans", colour = cor_texto)
     
   ) +
   labs(
@@ -265,6 +280,7 @@ dados_grafico_fontes %>%
 
   graf_quantidade / graf_outorgado
   
+
 
 
 ```
@@ -292,22 +308,25 @@ gera_dados_mapa_estados() %>%
   ggplot() +
   geom_sf(data = world, fill= "lightgray" )+
   geom_sf(data = mapa_brasil,
-          fill= "black",
-          color = "white" )+
+          fill= cor_fundo_estados )+
   geom_sf( aes( fill= total )) +
   scale_fill_continuous_sequential(palette = "Heat 2") +
   theme_void() +
   theme(
     panel.background = element_rect(fill="#0077be"),
     legend.position = "bottom",
-    #strip.text = element_text(size=10),
-    plot.title = element_text( hjust=0.5)
+    legend.background = element_rect(fill= cor_fundo),
+    plot.background = element_rect(fill =cor_fundo ),
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 12, face = "italic"),
+    text = element_text(family = "Noto Sans", colour = cor_texto),
+    strip.text = element_text(size= 8, face ="bold")
   ) +
   labs(
     fill= "Potência em GW",
     size= "Potência em GW",
     caption = paste0("Fonte: ANEEL (", data_geracao_dados,"). Elaboração: Fernando Barbalho") ,
-    title= "Potência total outorgada por estado"
+    title= " Potência total outorgada por estado"
   )+
   coord_sf(xlim = c(-31,-72), ylim=c(-35,5)) +
   facet_wrap(fase+dsc_origem_combustivel~., nrow = 1)
@@ -323,25 +342,28 @@ gera_dados_mapa_estados() %>%
   ggplot() +
   geom_sf(data = world, fill= "lightgray" )+
   geom_sf(data = mapa_brasil,
-          fill= "black",
-          color = "white" )+
+          fill= cor_fundo_estados )+
   geom_sf( aes( fill= total )) +
   scale_fill_continuous_sequential(palette = "Heat 2") +
   theme_void() +
   theme(
     panel.background = element_rect(fill="#0077be"),
     legend.position = "bottom",
-    #strip.text = element_text(size=16),
-    #title = element_text(size=20)
+    legend.background = element_rect(fill= cor_fundo),
+    plot.background = element_rect(fill =cor_fundo ),
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 12, face = "italic"),
+    text = element_text(family = "Noto Sans", colour = cor_texto),
+    strip.text = element_text(size= 8, face ="bold")
   ) +
   labs(
     fill= "Potência em GW",
-    size= "Potência em GW",
     caption = paste0("Fonte: ANEEL (", data_geracao_dados,"). Elaboração: Fernando Barbalho") ,
-    title= "Potência total gerada por estado"
+    title= " Potência total gerada por estado"
   )+
   coord_sf(xlim = c(-31,-72), ylim=c(-35,5)) +
   facet_wrap(fase+dsc_origem_combustivel~., nrow = 2)
+
 
 
 ```
@@ -356,8 +378,8 @@ dados_grafico_historia<-
   mutate(ano_inicio = lubridate::year(dat_entrada_operacao)) %>%
   filter( ano_inicio> 1900) %>%
   summarise( total_outorgado  = sum(mda_potencia_outorgada_kw), #
-            .by = c(ano_inicio, dsc_origem_combustivel)) %>%
-  mutate(total_outorgado = total_outorgado/10^3)
+             .by = c(ano_inicio, dsc_origem_combustivel)) %>%
+  mutate(total_outorgado = total_outorgado/10^6)
 
 dados_2016 <-
   dados_grafico_historia %>%
@@ -367,8 +389,9 @@ dados_2016 <-
 
 ordem_origem_combustivel<- 
   dados_grafico_historia %>%
-  filter(between(ano_inicio, 2017, 2025)) %>%
-  summarise(total = sum(total_outorgado)) %>%
+  filter(between(ano_inicio, 1901, 2000)) %>%
+  summarise(total = sum(total_outorgado),
+            .by = c(dsc_origem_combustivel)) %>%
   arrange(desc(total))
 
 
@@ -382,35 +405,37 @@ dados_grafico_historia %>%
             linewidth = 0.1,
             show.legend = TRUE) +
   geom_text(data = dados_2016, 
-            aes(label = str_wrap("Em 2016 entra em operação Belo Monte. Potência outorgada atual: 11 mil GW   ", 100) ),
+            aes(label = str_wrap("Em 2016 entra em operação Belo Monte. Potência outorgada atual: 11 GW   ", 100) ),
             hjust = 1.01,
-            color = "#324e5a")   +
-  geom_text(data = tibble(ano_inicio =1960, total_outorgado = 7000), 
-            label = str_wrap("Das usinas em operação desde 1960–2000, 90% da potência instalada é de fonte hídrica.",29),
+            color = cor_texto)   +
+  geom_text(data = tibble(ano_inicio =1950, total_outorgado = 7), 
+            label = str_wrap("Das usinas que entraram em operação entre 1901 e 2000, 90% da potência instalada é de fonte hídrica.",40),
             hjust = 0.5,
-            color = "#324e5a") +
-  geom_curve(
-    aes(x = 1985, y = 14900, xend = 2016, yend = 11000),
-    curvature = 0.25, ncp = 50,
-    arrow = arrow(length = unit(4, "mm"), type = "closed"),
-            color = "#324e5a"
+            color = cor_texto) +
+  geom_curve( data = tibble(ano_inicio = 1985, total_outorgado= 14.9),
+              aes( xend = 2016, yend = 11),
+              curvature = 0.25, ncp = 50,
+              arrow = arrow(length = unit(3, "mm"), type = "closed"),
+              color = cor_texto,
+              linetype = "dashed"
   )   +
-  geom_text(data = tibble(ano_inicio =1955, total_outorgado = 12000), 
+  geom_text(data = tibble(ano_inicio =1955, total_outorgado = 12), 
             label = str_wrap("Das usinas em operação desde 2017, 73% da potência instalada é de fontes solares ou eólicas.",40),
             hjust = 0.5,
-            color = "#324e5a") +
-  geom_curve(
-    aes(x = 1982, y = 11000, xend = 2023, yend = 8000),
-    curvature = 0.25, ncp = 50,
-    arrow = arrow(length = unit(4, "mm"), type = "closed"),
-            color = "#324e5a"
+            color = cor_texto) +
+  geom_curve(data = tibble(ano_inicio = 1982, total_outorgado= 11),
+             aes(
+               xend = 2023, yend = 9.5),
+             curvature = 0.25, ncp = 50,
+             arrow = arrow(length = unit(3, "mm"), type = "closed"),
+             color = cor_texto,
+             linetype = "dashed"
   )   + 
-
-  theme_light() +
   scale_fill_manual(values = cores_combustivel) +
   scale_y_continuous(labels = scales::comma_format(big.mark = ".")) +
+  theme_light() +
   theme(
-    panel.background =  element_rect( fill= "#F5F5F5"),
+    panel.background =  element_rect( fill= cor_fundo_painel),
     panel.grid =  element_blank(),
     legend.position = "bottom",
     legend.title = element_blank(),
@@ -418,12 +443,12 @@ dados_grafico_historia %>%
     plot.background = element_rect(fill =cor_fundo ),
     plot.title = element_text(size = 14, face = "bold"),
     plot.subtitle = element_text(size = 12, face = "italic"),
-    text = element_text(family = "Noto Sans", colour = "#324e5a")
+    text = element_text(family = "Noto Sans", colour = cor_texto)
   ) +
   labs(
     title = "Ecos do passado na energia de hoje",
     subtitle =str_wrap("Uma linha do tempo das fontes que moldaram cada gigawatt outorgado",70)  ,
-    caption = "Fonte: ANEEL. Elaboração: Fernando Barbalho",
+    caption = "Fonte: ANEEL. Elaboração: Fernando Barbalho. Consultoria: Sérgio Leite (ANEEL)",
     y= "Potência outorgada em GW",
     x= ""
   )
