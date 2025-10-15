@@ -16,26 +16,38 @@ library(sp)
 library(sf)
 library(spData)
 library(patchwork)
+library(forecast)
+
 
 ```
 
 
 ```{r}
 
-#siga_empreendimentos_geracao <- readRDS("~/Github/geracao_energia_eletrica/siga_empreendimentos_geracao.rds")
+#siga_empreendimentos_geracao <- readRDS("siga_empreendimentos_geracao.rds")
 
 
 
 #siga_empreendimentos_geracao <- read_csv("siga_empreendimentos_geracao.csv")
 
-#siga_empreendimentos_geracao_open_data 
 
-siga_empreendimentos_geracao<- read_delim("https://dadosabertos.aneel.gov.br/dataset/6d90b77c-c5f5-4d81-bdec-7bc619494bb9/resource/2f65a1b0-19b8-4360-8238-b34ab4693d55/download/siga-empreendimentos-geracao-diario.csv", 
-                                            delim = ";", escape_double = FALSE, locale = locale(decimal_mark = ",", 
-                                                                                                grouping_mark = ".", encoding = "latin1"), 
-                                            trim_ws = TRUE) %>%
-   janitor::clean_names()
+endereco_aneel<- "https://dadosabertos.aneel.gov.br/dataset/6d90b77c-c5f5-4d81-bdec-7bc619494bb9/resource/2f65a1b0-19b8-4360-8238-b34ab4693d55/download/siga-empreendimentos-geracao-diario.csv"
 
+siga_empreendimentos_geracao<- 
+  read_delim(endereco_aneel,
+             delim = ";",
+             escape_double = FALSE,
+             locale = locale(decimal_mark = ",",
+                             grouping_mark = ".",
+                             encoding = "latin1"),
+             trim_ws = TRUE) %>%
+  janitor::clean_names()
+
+#saveRDS(siga_empreendimentos_geracao,"siga_empreendimentos_geracao.rds")
+
+#dados_grafico_ember <- readRDS("dados_grafico_ember.rds")
+
+dados_grafico_ember <- read_csv("dados_grafico_ember.csv")
 
 
 data("world")
@@ -46,6 +58,9 @@ sedes<- geobr::read_municipal_seat(showProgress = FALSE)
 
 estados<- geobr::read_state(showProgress = FALSE, simplified = FALSE)
 
+biomas<- 
+  geobr::read_biomes(simplified = FALSE, showProgress = FALSE) %>%
+  filter(name_biome!= "Sistema Costeiro")
 
 # ide_nucleo_ceg <- 
 #   (siga_empreendimentos_geracao %>%
@@ -58,14 +73,8 @@ estados<- geobr::read_state(showProgress = FALSE, simplified = FALSE)
 # Munic_pios_com_C_digo_IBGE$ide_nucleo_ceg <- ide_nucleo_ceg
 
 
-biomas<- 
-  geobr::read_biomes(simplified = FALSE, showProgress = FALSE) %>%
-  filter(name_biome!= "Sistema Costeiro")
   
 
-cores_tipo_combustivel<- c("#999999","#009E73" )
-cores_combustivel<- c("#D55E00","#56B4E9","#999999","#0072B2","#F0E442")
-cores_biomas<- c("#88902b","#ffd795","#f9e994","#b5ce94","#fef9d1", "#cbb3c3" )
 
 # usinas_coordenadas_ajustadas<-
 # siga_empreendimentos_geracao %>%
@@ -139,10 +148,72 @@ gera_dados_grafico<- function(){
 
 }
 
+
+
+
+forca_tendencia <- function(serie){
+  tendencia<- 
+    serie$data %>%
+    filter(parts=="trend")
+
+  remanescente<- 
+    serie$data %>%
+    filter(parts=="remainder")
+  
+  tend_rem<-
+    bind_rows(tendencia, remanescente)
+  
+  proporcao_variancias<-
+    var(remanescente$y)/var(tend_rem$y)
+    
+    
+  max(0, 1- proporcao_variancias  )
+  
+}
+
+
+forca_sazonalidade <- function(serie){
+  sazonalidade<- 
+    serie$data %>%
+    filter(parts=="seasonal")
+  
+  remanescente<- 
+    serie$data %>%
+    filter(parts=="remainder")
+  
+  sazon_rem<-
+    bind_rows(sazonalidade, remanescente)
+  
+  proporcao_variancias<-
+    var(remanescente$y)/var(sazon_rem$y)
+  
+  
+  max(0, 1- proporcao_variancias  )
+  
+}
+
+
+decompoe_serie_pais<- function(area_nome){
+  
+  dados_ts <-
+    (dados_grafico_ember %>%
+       filter(area == area_nome) %>%
+       select(value))$value
+  
+  
+  
+  ts(dados_ts, frequency = 12)%>%
+    stl(t.window=12, s.window="periodic", robust=TRUE) %>%
+    autoplot()
+  
+  
+}
+
+
 data_geracao_dados<- format( siga_empreendimentos_geracao$dat_geracao_conjunto_dados[1], format = "%d/%m/%Y") 
 
-#gera_dados_grafico() %>%
- # write_csv("dados_graficos_fontes.csv")
+areas <-unique(dados_grafico_ember$area)
+
 
 cor_fundo<- "#D0D0D0"# "#F8F8F8"
 
@@ -153,6 +224,11 @@ cor_fundo_estados<- "#696969"
 cor_fundo_mapa_pontos <- "#2B2B2B" #"#505050"
 
 cor_texto<- "#324e5a"
+
+
+cores_tipo_combustivel<- c("#999999","#009E73" )
+cores_combustivel<- c("#D55E00", "#4BB5C1","#999999","#0072B2","#F0E442") # 
+cores_biomas<- c("#88902b","#ffd795","#f9e994","#b5ce94","#fef9d1", "#cbb3c3" )
 
 
 ```
@@ -202,9 +278,7 @@ Mais dados confirmam que a transição não é apenas quantitativa, mas qualitat
 ```{r fig.dpi= 300, fig.height=7.5, fig.width=9}
 
 
-#dados_grafico_fontes <- read_csv("dados_grafico_fontes.csv")
-
-dados_grafico_fontes <- gera_dados_grafico() #read_csv("dados_graficos_fontes.csv")
+dados_grafico_fontes <- gera_dados_grafico() 
 #
 graf_quantidade<-
   dados_grafico_fontes %>%
@@ -216,7 +290,8 @@ graf_quantidade<-
                 color = tipo_renovavel), 
             show.legend = FALSE,
             hjust =0,
-            fontface = "bold")+
+            fontface = "bold",
+            color = cor_texto)+
   scale_fill_manual(values=cores_tipo_combustivel) +
   scale_color_manual(values=cores_tipo_combustivel) +
   scale_x_continuous(expand = expansion(mult = c(0.03, 0.17))) +  
@@ -255,7 +330,8 @@ dados_grafico_fontes %>%
                 color = tipo_renovavel), 
             hjust =0, 
             show.legend = FALSE,
-            fontface = "bold")+
+            fontface = "bold",
+            color = cor_texto)+
   scale_fill_manual(values=cores_tipo_combustivel) +
   scale_color_manual(values=cores_tipo_combustivel) +
   scale_x_continuous(expand = expansion(mult = c(0.03, 0.09))) +  
@@ -276,7 +352,7 @@ dados_grafico_fontes %>%
     
   ) +
   labs(
-    title= "Potência outorgada (valores em milhões de KW)",
+    title= "Potência outorgada (valores em GW)",
     fill="",
     caption = paste0("Fonte: ANEEL (", data_geracao_dados,"). Elaboração: Fernando Barbalho"), 
     x="",
@@ -322,6 +398,9 @@ gera_dados_mapa_estados() %>%
     panel.background = element_rect(fill="#0077be"),
     legend.position = "bottom",
     legend.background = element_rect(fill= cor_fundo),
+    legend.key.size = unit(4, "mm"),
+    legend.title = element_text(size =8, color = cor_texto),
+    legend.text = element_text(size =8, color = cor_texto),
     plot.background = element_rect(fill =cor_fundo ),
     plot.title = element_text(size = 14, face = "bold"),
     plot.subtitle = element_text(size = 12, face = "italic"),
@@ -330,12 +409,12 @@ gera_dados_mapa_estados() %>%
   ) +
   labs(
     fill= "Potência em GW",
-    size= "Potência em GW",
     caption = paste0("Fonte: ANEEL (", data_geracao_dados,"). Elaboração: Fernando Barbalho") ,
-    title= " Potência total outorgada por estado"
+    title= " Potência total outorgada por estado",
+    subtitle = " Energia solar"
   )+
   coord_sf(xlim = c(-31,-72), ylim=c(-35,5)) +
-  facet_wrap(fase+dsc_origem_combustivel~., nrow = 1)
+  facet_wrap(fase~., nrow = 1)
 ```
 
 Se há avanços, há ainda pontos de preocupação. O Pará ilustra, de forma emblemática, os dilemas da mudança de paradigma. Lar das duas maiores hidrelétricas do país --- **Belo Monte** (11 GW) e **Tucuruí** (8,5 GW) ---, o estado não conta com novos projetos hídricos em desenvolvimento. Mais amplamente, a região Norte sitntetiza os desafios para as políticas públicas de geração e consumo de energia. Do lado da oferta, não há expansão significativa nem da fonte hídrica nem de alternativas renováveis. Ao mesmo tempo, muitas comunidades isoladas continuam carentes de soluções confiáveis e de baixo impacto ambiental para geração e distribuição de eletricidade.
@@ -356,6 +435,9 @@ gera_dados_mapa_estados() %>%
     panel.background = element_rect(fill="#0077be"),
     legend.position = "bottom",
     legend.background = element_rect(fill= cor_fundo),
+    legend.key.size = unit(4, "mm"),
+    legend.title = element_text(size =8, color = cor_texto),
+    legend.text = element_text(size =8, color = cor_texto),
     plot.background = element_rect(fill =cor_fundo ),
     plot.title = element_text(size = 14, face = "bold"),
     plot.subtitle = element_text(size = 12, face = "italic"),
@@ -463,3 +545,225 @@ dados_grafico_historia %>%
 
 ```
 
+```{r fig.dpi= 300}
+
+tendencias<- 
+  purrr::map_dfr(areas, function(nome_area){
+   
+   serie<- 
+   decompoe_serie_pais(nome_area)
+   
+   tendencia<-
+   serie$data %>%
+    filter(parts=="trend")
+   
+   tendencia$area <- nome_area
+   
+   tendencia$date <-
+     (dados_grafico_ember %>%
+       filter(area == nome_area))$date
+   
+   tendencia$value = tendencia$y
+   
+   tendencia
+
+  })
+
+dados_grafico_ember %>%
+  ggplot(aes(x=date, y=value)) +
+  geom_area(fill = cores_combustivel[5], color= "black") +
+  geom_line(data = tendencias, color= "red", size =1.2) +
+  geom_text(data = tibble(area= "Brazil", date= as.Date("2021-01-01"),value=7),
+            aes(label= str_wrap("Sazonalidades climáticas com baixo impacto",20)),
+            color = cor_texto,
+            fontface = "bold")+
+  geom_text(data = tibble(area= "Brazil", date= as.Date("2021-06-01"),value=1),
+            aes(label= str_wrap("Tendência",20)),
+            color = "red",
+            hjust =0,
+            fontface = "bold")+
+  theme_light() +
+  theme(
+    panel.background =  element_rect( fill= cor_fundo_painel),
+    panel.grid =  element_blank(),
+    strip.background = element_blank(),
+    strip.text = element_text(face = "bold", colour = cor_texto),
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    legend.background = element_rect(fill= cor_fundo),
+    #axis.text.x = element_blank(),
+    plot.background = element_rect(fill =cor_fundo ),
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 12, face = "italic"),
+    text = element_text(family = "Noto Sans", colour = cor_texto)
+    
+  ) +
+  labs(
+    title = "Energia Solar: Série temporal de geração",
+    y= "Energia gerada em TwH",
+    x="",
+    caption =  "Fonte: EMBER. Dados coletados em Maio de 2025. Elaboração: Fernando Barbalho"
+  ) +
+  facet_wrap(area~., scales= "free_y")
+
+```
+
+```{r}
+
+decompoe_serie_pais("Brazil")
+```
+
+
+
+```{r}
+
+decompoe_serie_pais("Germany")
+```
+
+
+```{r fig.dpi= 300, fig.width=8.5}
+
+
+season_trend<-
+  purrr::map_dfr(areas, function(area){
+    
+    #print(area)
+    
+    dados_area<- decompoe_serie_pais(area)
+      
+    tibble(area = area, sazonalidade = forca_sazonalidade(dados_area), tendencia = forca_tendencia(dados_area))
+    
+  })
+
+dados_grafico<-
+  season_trend %>%
+  pivot_longer(cols = sazonalidade:tendencia, names_to = "forca", values_to = "valor") %>%
+  mutate(forca = ifelse(forca == "tendencia", "Tendência", "Sazonalidade")) 
+
+
+graf1<-
+  season_trend %>%
+  mutate(area = reorder(area, sazonalidade)) %>%
+  ggplot(aes(x= sazonalidade, y=area )) +
+  geom_col(aes(fill= sazonalidade), color="lightgray", show.legend = FALSE)+
+  geom_text(aes(label = round(sazonalidade,2)),
+            color = cor_texto,
+            hjust= 1,
+            fontface = "bold") +
+  scale_fill_continuous_sequential(palette = "Heat 2") +
+  theme_light() +
+  theme(
+    panel.background =  element_rect( fill= cor_fundo_painel),
+    panel.grid =  element_blank(),
+    strip.background = element_blank(),
+    strip.text = element_text(face = "bold", colour = cor_texto),
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    legend.background = element_rect(fill= cor_fundo),
+    axis.text.x = element_blank(),
+    plot.background = element_rect(fill =cor_fundo ),
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 12, face = "italic"),
+    text = element_text(family = "Noto Sans", colour = cor_texto)
+    
+  ) +
+  labs(
+    title = "Força da sazonalidade",
+    y= "",
+    x="",
+    #caption =  "Fonte: EMBER. Elaboração: Fernando Barbalho"
+  )
+
+graf2<-
+  season_trend %>%
+  mutate(area = reorder(area, tendencia)) %>%
+  ggplot(aes(x= tendencia, y=area )) +
+  geom_col(aes(fill= tendencia), color="lightgray", show.legend = FALSE)+
+  geom_text(aes(label = round(tendencia,2)),
+            color = cor_texto,
+            hjust= 1,
+            fontface = "bold") +
+  scale_fill_continuous_sequential(palette = "Heat 2") +
+  theme_light() +
+  theme(
+    panel.background =  element_rect( fill= cor_fundo_painel),
+    panel.grid =  element_blank(),
+    strip.background = element_blank(),
+    strip.text = element_text(face = "bold", colour = cor_texto),
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    legend.background = element_rect(fill= cor_fundo),
+    axis.text.x = element_blank(),
+    plot.background = element_rect(fill =cor_fundo ),
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 12, face = "italic"),
+    text = element_text(family = "Noto Sans", colour = cor_texto)
+    
+  ) +
+  labs(
+    title = "Força da tendência",
+    y= "",
+    x="",
+    caption =  "Fonte: EMBER. Elaboração: Fernando Barbalho"
+  )
+
+
+graf1 + graf2
+
+```
+
+```{r fig.dpi= 300}
+
+gera_dados_mapa() %>%
+  mutate(mda_potencia_outorgada_kw = mda_potencia_outorgada_kw/10^3) %>%
+  filter(dsc_origem_combustivel=="Solar") %>%
+  ggplot()+
+  geom_sf(data = world, fill= "lightgray" )+
+  geom_sf(data = mapa_brasil,
+          fill= "black",
+          color = NA )+
+  geom_sf(data= biomas[1,],
+          fill= cores_biomas[1],
+          color = NA) +
+  geom_sf(data= biomas[2,],
+          fill= cores_biomas[2],
+          color = NA) +
+  geom_sf(data= biomas[3,],
+          fill= cores_biomas[3],
+          color = NA) +
+  geom_sf(data= biomas[4,],
+          fill= cores_biomas[4],
+          color = NA) +
+  geom_sf(data= biomas[5,],
+          fill= cores_biomas[5],
+          color = NA) +
+  geom_sf(data= biomas[6,],
+          fill= cores_biomas[6],
+          color = NA) +
+  
+  geom_sf( aes( size= mda_potencia_outorgada_kw ),
+           pch=21, 
+           alpha=1,
+           fill= cores_combustivel[5], #"#D55E00"
+           color = "#D55E00") + #AD1A1A"
+  coord_sf(xlim = c(-31,-72), ylim=c(-35,5))+
+  theme_void()  +
+  theme(
+    panel.background = element_rect(fill="#0077be"),
+    legend.position = "bottom",
+    legend.background = element_rect(fill= cor_fundo),
+    plot.background = element_rect(fill =cor_fundo ),
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 12, face = "italic"),
+    text = element_text(family = "Noto Sans", colour = cor_texto),
+    strip.text = element_text(size= 8, face ="bold")
+  ) +
+  labs(
+    size= "Potência em MW",
+    caption = paste0("Fonte: ANEEL (",data_geracao_dados,"). Elaboração: Fernando Barbalho") ,
+    title = "Distribuição da potência outorgada entre os seis biomas terrestres"
+  ) +
+  facet_wrap(fase+dsc_origem_combustivel~.)
+
+
+```
