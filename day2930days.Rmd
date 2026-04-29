@@ -1,0 +1,127 @@
+---
+title: "Transição na geração de energia elétrica"
+subtitle: "Números e geografia da opção brasileira pela energia renovável"
+output: 
+  html_document:
+    code_folding: hide
+date: "2025-08-15"
+---
+
+```{r setup, include=TRUE}
+knitr::opts_chunk$set(echo = TRUE, message  = FALSE, warning = FALSE)
+
+library(tidyverse)
+library(colorspace)
+library(sp)
+library(sf)
+library(spData)
+library(patchwork)
+library(forecast)
+
+
+```
+
+
+```{r}
+
+
+
+endereco_aneel<- "https://dadosabertos.aneel.gov.br/dataset/6d90b77c-c5f5-4d81-bdec-7bc619494bb9/resource/2f65a1b0-19b8-4360-8238-b34ab4693d55/download/siga-empreendimentos-geracao-diario.csv"
+
+siga_empreendimentos_geracao<- 
+  read_delim(endereco_aneel,
+             delim = ";",
+             escape_double = FALSE,
+             locale = locale(decimal_mark = ",",
+                             grouping_mark = ".",
+                             encoding = "latin1"),
+             trim_ws = TRUE) %>%
+  janitor::clean_names()
+
+
+mapa_brasil<- geobr::read_country(showProgress = FALSE)
+
+
+
+coords_usinas<-
+  siga_empreendimentos_geracao %>%
+  st_as_sf(coords = c("num_coord_e_empreendimento" , "num_coord_n_empreendimento"),
+           crs = 4326) %>%
+  select(dsc_fase_usina, dsc_origem_combustivel, mda_potencia_outorgada_kw, mda_potencia_outorgada_kw,geometry) 
+
+
+
+gera_dados_mapa<- function(){
+  coords_usinas %>%
+  filter(dsc_origem_combustivel != "Nuclear") %>%
+  mutate(fase = case_when(
+    dsc_fase_usina == "Operação" ~ "In Service",
+    dsc_fase_usina != "Operação" ~ "Planned & Under Development"
+  )) %>%
+  mutate(fase = factor(fase, levels = c("In Service", "Planned & Under Development"))) %>%
+  mutate(tipo_renovavel= case_when(
+    dsc_origem_combustivel == "Fóssil" ~ "Não renovável",
+    dsc_origem_combustivel != "Fóssil" ~ "Renovável",
+  )) 
+}
+
+data_geracao_dados<- format( siga_empreendimentos_geracao$dat_geracao_conjunto_dados[1], format = "%d/%m/%Y") 
+
+cor_fundo<- "#D0D0D0"# "#F8F8F8"
+
+cor_fundo_painel<- "#F5F5F5"
+
+cor_fundo_estados<- "#696969"
+
+cor_fundo_mapa_pontos <- "#2B2B2B" #"#505050"
+
+cor_texto<- "#324e5a"
+
+
+cores_combustivel<- c("#D55E00", "#4BB5C1","#999999","#0072B2","#F0E442") # 
+
+
+```
+
+
+
+
+```{r fig.dpi= 300}
+gera_dados_mapa() %>%
+  mutate(mda_potencia_outorgada_kw = mda_potencia_outorgada_kw/10^3) %>%
+  filter(dsc_origem_combustivel=="Solar") %>%
+  ggplot()+
+  #geom_sf(data = world, fill= "lightgray" )+
+  geom_sf(data = mapa_brasil,
+          fill= "black",
+          alpha= 0.3,
+          color = NA )+
+  geom_sf( aes( size= mda_potencia_outorgada_kw ),
+           pch=21, 
+           alpha=0.1,
+           fill= cores_combustivel[5], #"#D55E00"
+           color = cor_fundo) + #AD1A1A" +
+  coord_sf(xlim = c(-31,-72), ylim=c(-35,5))+
+  theme_void()  +
+  theme(
+    panel.background = element_rect(fill= "#505050" ), #"#505050"
+    legend.position = "bottom",
+    legend.background = element_rect(fill= "#505050", color = "#505050"),
+    legend.text = element_text(size = 8),
+    legend.title = element_text(size = 8),
+    plot.background = element_rect(fill= "#505050"),
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 10, face = "italic"),
+    plot.caption = element_text(size = 8, face = "italic"),
+    text = element_text( colour = cores_combustivel[5]),
+    strip.text = element_text(size= 8, face ="bold")
+  ) +
+  labs(
+    size= "Power em MW",
+    caption = paste0("Source: ANEEL (",data_geracao_dados,"). Elaboration by Fernando Barbalho") ,
+    title = "Sunspots of Power",
+    subtitle = "Large-scale solar projects are concentrating along Brazil’s high-irradiation corridor. A shift toward bigger plants\nand a new geographic axis of the energy transition.\n"
+  ) +
+  facet_wrap(fase~.)
+```
+
